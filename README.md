@@ -1,4 +1,4 @@
-#Navodila za pripravo dela
+# Navodila za pripravo dela
 
 1. Za installation godot pojdi na https://godotengine.org/
 2. Installiraj verzijo ki **NI** .NET,
