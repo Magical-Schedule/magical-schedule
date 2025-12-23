@@ -16,6 +16,6 @@ debug_color = Color(7.2196127e-07, 0.6071444, 0.18817249, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -58)
+position = Vector2(0, -56)
 scale = Vector2(0.15039063, 0.15039063)
 texture = ExtResource("1_3vyb7")
