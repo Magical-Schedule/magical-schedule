@@ -19,3 +19,7 @@ texture_filter = 1
 position = Vector2(0, -58)
 scale = Vector2(0.15039063, 0.15039063)
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
