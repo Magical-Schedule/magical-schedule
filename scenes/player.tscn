@@ -4,19 +4,20 @@
 [ext_resource type="Script" uid="uid://bwud2fw050nbq" path="res://scripts/player.gd" id="1_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rupst"]
-size = Vector2(53, 122)
+size = Vector2(66, 112)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -58)
+position = Vector2(0, -56)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_rupst")
 debug_color = Color(7.2196127e-07, 0.6071444, 0.18817249, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -58)
+position = Vector2(0, -56)
 scale = Vector2(0.15039063, 0.15039063)
 texture = ExtResource("1_3vyb7")
 
