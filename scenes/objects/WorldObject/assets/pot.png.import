@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byd2cxb2mlnfh"
-path="res://.godot/imported/sprite.png-81ece62e9a466055547c5497001d8831.ctex"
+uid="uid://0i5kblqu5rml"
+path="res://.godot/imported/pot.png-6f2793eefa78564f168c59d9beb6b08b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/sprite.png"
-dest_files=["res://.godot/imported/sprite.png-81ece62e9a466055547c5497001d8831.ctex"]
+source_file="res://scenes/objects/WorldObject/assets/pot.png"
+dest_files=["res://.godot/imported/pot.png-6f2793eefa78564f168c59d9beb6b08b.ctex"]
 
 [params]
 

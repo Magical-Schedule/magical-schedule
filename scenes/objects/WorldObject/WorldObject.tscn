@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://fw4ncy43uda"]
+
+[ext_resource type="Script" uid="uid://dshrbfg3hn12l" path="res://scenes/objects/WorldObject/scripts/WorldObject.gd" id="1_emgmv"]
+[ext_resource type="Texture2D" uid="uid://0i5kblqu5rml" path="res://scenes/objects/WorldObject/assets/pot.png" id="2_7pjny"]
+[ext_resource type="FontFile" uid="uid://wxwlkt46ojsl" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_r6vbj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4efhx"]
+radius = 182.01099
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtrb0"]
+font = ExtResource("3_r6vbj")
+font_size = 42
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emgmv"]
+size = Vector2(74, 80)
+
+[node name="WorldObject" type="Node2D"]
+script = ExtResource("1_emgmv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.0320001, 1.0320001)
+texture = ExtResource("2_7pjny")
+
+[node name="Proximity" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proximity"]
+shape = SubResource("CircleShape2D_4efhx")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -147.0
+offset_right = 76.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 10.0
+offset_right = 152.0
+offset_bottom = 61.0
+text = "Some UI"
+label_settings = SubResource("LabelSettings_rtrb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_emgmv")
+debug_color = Color(0.81270915, 0.35538295, 0.5395706, 0.41960785)
