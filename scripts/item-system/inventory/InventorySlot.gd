@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var color_rect: ColorRect = $PlaceholderIcon
+@onready var Icon : TextureRect = $TextureRect
 @onready var quantity_label: Label = $Label
 
 var slot_data: SlotData
@@ -13,11 +13,11 @@ func set_slot_data(data: SlotData):
 
 func _update_ui():
 	if slot_data.item_data:
-		color_rect.color = slot_data.item_data.color
-		color_rect.visible = true
+		Icon.texture = slot_data.item_data.icon
+		Icon.visible = true
 		quantity_label.text = str(slot_data.quantity) if slot_data.quantity > 1 else ""
 	else:
-		color_rect.visible = false
+		Icon.visible = false
 		quantity_label.text = ""
 
 func _gui_input(event):
