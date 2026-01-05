@@ -31,12 +31,31 @@ func populate_grids():
 #inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
+		inv_panel.visible = !inv_panel.visible 
+		
 		if inv_panel.visible:
-			inv_panel.visible = false
-		else:
-			inv_panel.visible = true
-		if visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory_data.save_inventory()
+			
+func add_item(item: ItemData, count: int = 1):
+	var search_order = []
+	for i in range(54, 63): search_order.append(i) # Hotbar indeksi
+	for i in range(0, 54): search_order.append(i)  # Inventory indeksi
+
+	if item.stackable:
+		for i in search_order:
+			var slot = inventory_data.slots[i]
+			if slot.item_data == item:
+				slot.quantity += count
+				return true # Uspešno dodano
+
+	for i in search_order:
+		var slot = inventory_data.slots[i]
+		if slot.item_data == null:
+			slot.item_data = item
+			slot.quantity = count
+			return true # Uspešno dodano
+	
+	return false
