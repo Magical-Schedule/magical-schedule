@@ -11,6 +11,7 @@ offset_right = -1856.0
 offset_bottom = -1016.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("1_vov34")
 
 [node name="Label" type="Label" parent="."]
@@ -18,3 +19,4 @@ layout_mode = 2
 
 [node name="PlaceholderIcon" type="ColorRect" parent="."]
 layout_mode = 2
+mouse_filter = 2

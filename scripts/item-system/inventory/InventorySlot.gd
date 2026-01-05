@@ -16,37 +16,30 @@ func _update_ui():
 		color_rect.color = slot_data.item_data.color
 		color_rect.visible = true
 		quantity_label.text = str(slot_data.quantity) if slot_data.quantity > 1 else ""
-		tooltip_text = slot_data.item_data.name
 	else:
 		color_rect.visible = false
 		quantity_label.text = ""
-		tooltip_text = ""
 
-func _get_drag_data(_at_position):
-	if slot_data.item_data:
-		var preview = ColorRect.new()
-		preview.color = slot_data.item_data.color
-		preview.custom_minimum_size = Vector2(40, 40)
-		set_drag_preview(preview)
-		return slot_data
-	return null
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_quick_move()
 
-func _can_drop_data(_at_position, data):
-	return data is SlotData
-
-# Popravljena vrstica 37 v InventorySlot.gd
-func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	# Najprej preverimo, če je 'data' dejansko tipa SlotData
-	if data is SlotData:
-		if slot_data.item_data == data.item_data and slot_data.item_data.stackable:
-			slot_data.quantity += data.quantity
-			data.quantity = 0
-		else:
-			var temp_item = slot_data.item_data
-			var temp_qty = slot_data.quantity
-			
-			slot_data.item_data = data.item_data
-			slot_data.quantity = data.quantity
-			
-			data.item_data = temp_item
-			data.quantity = temp_qty
+func _quick_move():
+	if !slot_data.item_data: return
+	
+	# Išče InventoryUi vozlišče v drevesu
+	var ui = get_tree().root.find_child("InventoryUi", true, false)
+	if !ui: return
+	
+	var inv_data = ui.inventory_data
+	var idx = inv_data.slots.find(slot_data)
+	# Če je v nahrbtniku (0-53), išče v hotbarju (54-62) in obratno
+	var target_range = range(54, 63) if idx < 54 else range(0, 54)
+	
+	for i in target_range:
+		var target = inv_data.slots[i]
+		if target.item_data == null or (target.item_data == slot_data.item_data and target.item_data.stackable):
+			if target.item_data == null: target.item_data = slot_data.item_data
+			target.quantity += slot_data.quantity
+			slot_data.quantity = 0
+			return
