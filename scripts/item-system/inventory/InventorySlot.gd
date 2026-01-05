@@ -2,7 +2,6 @@ extends PanelContainer
 
 @onready var Icon : TextureRect = $TextureRect
 @onready var quantity_label: Label = $Label
-@onready var selection_frame: Control = $SelectionFrame
 
 var slot_data: SlotData
 
@@ -44,7 +43,3 @@ func _quick_move():
 			target.quantity += slot_data.quantity
 			slot_data.quantity = 0
 			return
-
-func set_highlight(is_active: bool):
-	if selection_frame:
-		selection_frame.visible = is_active
