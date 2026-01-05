@@ -15,6 +15,7 @@ func _ready():
 	inventory_data = InventoryData.load_or_create()
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
+	add_item(load("res://scripts/items/Define/mushroom.tres"))
 	populate_grids()
 #naredi inventory
 func populate_grids():
