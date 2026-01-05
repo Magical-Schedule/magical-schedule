@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fw4ncy43uda"]
+[gd_scene load_steps=9 format=3 uid="uid://fw4ncy43uda"]
 
 [ext_resource type="Script" uid="uid://dshrbfg3hn12l" path="res://scenes/objects/WorldObject/scripts/WorldObject.gd" id="1_emgmv"]
 [ext_resource type="Texture2D" uid="uid://0i5kblqu5rml" path="res://scenes/objects/WorldObject/assets/pot.png" id="2_7pjny"]
@@ -7,9 +7,20 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4efhx"]
 radius = 182.01099
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emgmv"]
+bg_color = Color(0.11070001, 0.155835, 0.27, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="LabelSettings" id="LabelSettings_rtrb0"]
 font = ExtResource("3_r6vbj")
-font_size = 42
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_emgmv"]
+font_size = 23
+font_color = Color(0.81700003, 0.86, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emgmv"]
 size = Vector2(74, 80)
@@ -34,22 +45,47 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -147.0
-offset_right = 76.0
-offset_bottom = -76.0
+offset_left = -96.0
+offset_top = -144.0
+offset_right = 96.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_emgmv")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/CenterContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Panel/CenterContainer/HBoxContainer"]
 texture_filter = 1
-layout_mode = 0
-offset_left = -2.0
-offset_top = 10.0
-offset_right = 152.0
-offset_bottom = 61.0
-text = "Some UI"
+layout_mode = 2
+text = "Press"
 label_settings = SubResource("LabelSettings_rtrb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_emgmv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
