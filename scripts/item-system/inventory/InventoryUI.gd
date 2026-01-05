@@ -9,7 +9,6 @@ extends Control
 
 
 var inventory_data: InventoryData
-var active_slot_index: int = 0
 
 func _ready():
 	print("creating inventory")
@@ -30,7 +29,6 @@ func populate_grids():
 		else:
 			hotbar_grid.add_child(slot_visual)
 		slot_visual.set_slot_data(inventory_data.slots[i])
-	update_hotbar_visuals()
 #inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
@@ -41,11 +39,6 @@ func _input(event):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory_data.save_inventory()
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			change_active_slot(-1)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			change_active_slot(1)
 			
 func add_item(item: ItemData, count: int = 1):
 	var search_order = []
@@ -67,17 +60,3 @@ func add_item(item: ItemData, count: int = 1):
 			return true # Uspešno dodano
 	
 	return false
-
-func update_hotbar_visuals():
-	# Preverimo, če hotbar sploh ima otroke, da ne pride do napake
-	if hotbar_grid.get_child_count() > 0:
-		for i in range(hotbar_grid.get_child_count()):
-			var slot = hotbar_grid.get_child(i)
-			# set_highlight mora biti definiran v InventorySlot.gd
-			slot.set_highlight(i == active_slot_index)
-
-func change_active_slot(direction: int):
-	# wrapi(trenutna_vrednost, min, max) 
-	# Hotbar ima 9 slotov (indeksi 0 do 8)
-	active_slot_index = wrapi(active_slot_index + direction, 0, 9)
-	update_hotbar_visuals()
