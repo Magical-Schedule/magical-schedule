@@ -6,6 +6,7 @@ enum FieldState { EMPTY, WET, GROWING, READY_TO_HARVEST }
 # Nodes (poveži v sceni)
 @onready var pot_sprite: Sprite2D = $PotSprite
 @onready var plant_sprite: Sprite2D = $PlantSprite
+@onready var interaction_area:  Area2D = $InteractionArea
 
 # State
 var state: FieldState = FieldState.EMPTY
@@ -22,6 +23,11 @@ var sprite_height: int = 32
 func _ready():
 	reset_field()
 	plant_sprite.visible = false
+	
+	# Poveži signale za detekcijo igralca
+	if interaction_area:
+		interaction_area.body_entered.connect(_on_player_entered)
+		interaction_area.body_exited.connect(_on_player_exited)
 
 func _process(delta):
 	if state == FieldState.GROWING and crop:
@@ -78,3 +84,14 @@ func reset_field():
 # Za interakcijo z igralcem
 func can_harvest() -> bool:
 	return state == FieldState.READY_TO_HARVEST
+
+# Dodaj nove funkcije na konec:
+func _on_player_entered(body):
+	if body is Player:
+		body.nearby_field = self
+		print("🟢 Igralec vstopil v območje polja")
+
+func _on_player_exited(body):
+	if body is Player:
+		body.nearby_field = null
+		print("🔴 Igralec zapustil območje polja")
