@@ -2472,4 +2472,4 @@ tile_map_data = PackedByteArray("AAADAAMAAQACAAEAAAADAAIAAQACAAEAAAADAAEAAQACAAE
 tile_set = SubResource("TileSet_o00ia")
 
 [node name="Field" parent="." instance=ExtResource("4_2o04f")]
-position = Vector2(149, -127)
+position = Vector2(212, -86)

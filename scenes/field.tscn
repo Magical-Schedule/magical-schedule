@@ -9,11 +9,15 @@
 script = ExtResource("1_ttalb")
 
 [node name="PotSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_lptdg")
 
 [node name="PlantSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ttalb")
