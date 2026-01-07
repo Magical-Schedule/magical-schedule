@@ -91,7 +91,7 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="UI/Panel/CenterContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "F"
+text = "E"
 label_settings = SubResource("LabelSettings_emgmv")
 horizontal_alignment = 1
 vertical_alignment = 1
