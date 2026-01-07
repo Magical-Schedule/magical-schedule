@@ -21,6 +21,7 @@ func _ready():
 	add_item(load("res://scripts/items/Define/mushroom_seed.tres"))
 	populate_grids()
 	
+	
 #naredi inventory
 func populate_grids():
 	for child in inv_grid.get_children(): child.queue_free()
@@ -33,6 +34,7 @@ func populate_grids():
 		else:
 			hotbar_grid.add_child(slot_visual)
 		slot_visual.set_slot_data(inventory_data.slots[i])
+	update_hotbar_visuals()
 #inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
@@ -43,6 +45,11 @@ func _input(event):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory_data.save_inventory()
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			change_active_slot(-1)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			change_active_slot(1)
 			
 func add_item(item: ItemData, count: int = 1):
 	var search_order = []
@@ -82,6 +89,6 @@ func change_active_slot(direction: int):
 func check_item():
 	return inventory_data.slots[54+inventory_data.active_slot_index].item_data
 	
-func get_item():
+func get_item_from_active():
 	if inventory_data.slots[54+inventory_data.active_slot_index].item_data != null:
 		inventory_data.slots[54+inventory_data.active_slot_index].quantity-=1
