@@ -17,6 +17,5 @@ func fade_in():
 	
 	tween.tween_property(self, "modulate:a", 1.0, fade_time)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
