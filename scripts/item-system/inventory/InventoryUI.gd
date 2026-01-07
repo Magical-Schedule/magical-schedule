@@ -16,9 +16,11 @@ func _ready():
 	inventory_data = InventoryData.load_or_create()
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
-	var active_slot_index = inventory_data.active_slot_index
+	
 	add_item(load("res://scripts/items/Define/mushroom.tres"))
+	add_item(load("res://scripts/items/Define/mushroom_seed.tres"))
 	populate_grids()
+	
 #naredi inventory
 func populate_grids():
 	for child in inv_grid.get_children(): child.queue_free()
@@ -82,3 +84,10 @@ func change_active_slot(direction: int):
 	# Hotbar ima 9 slotov (indeksi 0 do 8)
 	inventory_data.active_slot_index = wrapi(inventory_data.active_slot_index + direction, 0, 9)
 	update_hotbar_visuals()
+	
+func check_item():
+	return inventory_data.slots[54+inventory_data.active_slot_index].item_data
+	
+func get_item():
+	if inventory_data.slots[54+inventory_data.active_slot_index].item_data != null:
+		inventory_data.slots[54+inventory_data.active_slot_index].quantity-=1
