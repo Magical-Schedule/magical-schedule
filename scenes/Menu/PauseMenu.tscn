@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://blxtd8bp30nrq"]
+[gd_scene load_steps=4 format=3 uid="uid://blxtd8bp30nrq"]
+
+[ext_resource type="Texture2D" uid="uid://ctpdbc1okskyn" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_dc3ep"]
+[ext_resource type="Script" uid="uid://lkbwnjl6gwkx" path="res://scenes/Menu/pause_menu.gd" id="1_i6gef"]
+[ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://scenes/Menu/MenuTheme.tres" id="2_4d0hc"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +11,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i6gef")
+
+[node name="FadedBg" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.47843137)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_dc3ep")
+region_rect = Rect2(0, 0, 1920, 1080)
+patch_margin_left = 960
+patch_margin_top = 540
+patch_margin_right = 960
+patch_margin_bottom = 540
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 508.0
+offset_right = 1414.0
+offset_bottom = 811.0
+theme = ExtResource("2_4d0hc")
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit to Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="Quit to Desktop" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 774.0
+offset_top = 260.0
+offset_right = 1174.0
+offset_bottom = 565.0
+theme = ExtResource("2_4d0hc")
+text = "Paused
+"
+horizontal_alignment = 1
+vertical_alignment = 1
