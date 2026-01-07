@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Magical Schedule"
-run/main_scene="res://scenes/dev/playground.tscn"
+run/main_scene="uid://dkb4hj4mrg7vh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://cdantoxt736id"
+
+[autoload]
+
+GF="*res://scripts/game_flow.gd"
 
 [display]
 

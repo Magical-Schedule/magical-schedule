@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkb4hj4mrg7vh"]
+[gd_scene load_steps=7 format=3 uid="uid://dkb4hj4mrg7vh"]
 
 [ext_resource type="Texture2D" uid="uid://ctpdbc1okskyn" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_l61h4"]
+[ext_resource type="Script" uid="uid://by554hp572yci" path="res://scenes/Menu/main_menu.gd" id="1_whdkd"]
+[ext_resource type="FontFile" uid="uid://cvfy3l2k8mmtb" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_050rs"]
+[ext_resource type="Texture2D" uid="uid://cech1eav0str6" path="res://assets/UI and logos/High res/logo.png" id="3_whdkd"]
+
+[sub_resource type="Theme" id="Theme_4fyr5"]
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("2_050rs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ms1j"]
+texture = ExtResource("3_whdkd")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_whdkd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -20,3 +31,34 @@ patch_margin_left = 960
 patch_margin_top = 540
 patch_margin_right = 960
 patch_margin_bottom = 540
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 571.0
+offset_right = 1573.0
+offset_bottom = 867.0
+theme = SubResource("Theme_4fyr5")
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 66.0
+offset_right = 1659.0
+offset_bottom = 489.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ms1j")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
