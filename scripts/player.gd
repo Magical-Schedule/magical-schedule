@@ -22,7 +22,12 @@ func _physics_process(delta: float) -> void:
 	direction = direction.normalized()
 	velocity = move_speed * direction
 
-	breathe_time += delta * breathe_speed
+
+	if direction.x != 0:
+		sprite.flip_h = direction.x > 0
+
+	var target_speed = breathe_speed if velocity.length() < 1.0 else breathe_speed * 1.5
+	breathe_time += delta * target_speed
 
 	if velocity.length() < 1.0:
 		var scale_offset := sin(breathe_time) * breathe_amount
