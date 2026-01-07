@@ -14,7 +14,7 @@ const BACKPACK_SIZE = WIDTH * BACKPACK_HEIGHT
 @export_group("Visual Settings")
 @export var slot_size: Vector2 = Vector2(100, 100)
 @export var slot_background: Texture2D
-@export var inactive_transparency: float = 0.6
+@export var inactive_transparency: float = 0.5
 @export var active_transparency: float = 1.0
 
 

@@ -7,31 +7,25 @@ extends PanelContainer
 
 var slot_data: SlotData
 
+## Updating Slot UI
+func _update_ui():
+	if slot_data.item_data:
+		icon.texture = slot_data.item_data.icon
+		icon.visible = true
+		var qty = slot_data.item_data.quantity_data.current_stack
+		quantity_label.text = str(qty) if qty > 1 else ""
+	else:
+		icon.visible = false
+		quantity_label.text = ""
 
+## Setting Slot Data (called in InventoryUI)
 func set_slot_data(data: SlotData):
 	slot_data = data
 	if not slot_data.inventory_updated.is_connected(_update_ui):
 		slot_data.inventory_updated.connect(_update_ui)
 	_update_ui()
 
-func _update_ui():
-	if slot_data.item_data:
-		icon.texture = slot_data.item_data.icon
-		icon.visible = true
-		
-		# Pull quantity from the component instead of the slot
-		var qty = slot_data.item_data.quantity_data.current_stack
-		quantity_label.text = str(qty) if qty > 1 else ""
-	else:
-		icon.visible = false
-		quantity_label.text = ""
-		
-	self.modulate.a = 0.5
-
-func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		_quick_move()
-
+## Quick Move Helper Method
 func _quick_move():
 	if !slot_data.item_data: return 
 	
@@ -56,23 +50,30 @@ func _quick_move():
 			slot_data.item_data = null
 			return
 
+## GUI Input Method
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_quick_move()
 
+## Applies slot visuals
 func apply_visuals(bg_tex: Texture2D, alpha: float, slot_size: Vector2 = Vector2.ZERO):
 	if slot_size != Vector2.ZERO:
 		custom_minimum_size = slot_size
-		# Ensure the icon matches the new size
-		icon.custom_minimum_size = slot_size
 	
 	if bg_tex: background.texture = bg_tex
 	
 	# self_modulate affects the node's transparency 
 	# without affecting its children (like the icon)
-	background.self_modulate.a = alpha 
+	self.self_modulate.a = alpha
 
-func set_highlight(is_active: bool, active_alpha: float, inactive_alpha: float):
-	if selection_frame:
-		selection_frame.visible = is_active
+## Handles slot transparency
+func set_highlight(is_focused: bool, active_alpha: float, inactive_alpha: float):
+	selection_frame.visible = is_focused
 	
-	# Adjust transparency based on active state
-	var alpha = active_alpha if is_active else inactive_alpha
-	apply_visuals(null, alpha) # null because texture is already set
+	if is_focused:
+		self.self_modulate.a = active_alpha
+	else:
+		self.self_modulate.a = inactive_alpha
+		
+	# If the icon should also dim when not focused:
+	icon.modulate.a = active_alpha if is_focused else inactive_alpha

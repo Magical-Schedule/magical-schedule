@@ -7,6 +7,8 @@ extends Control
 @onready var inv_grid = $InventoryPanel/VBoxContainer/InventoryGrid
 
 var inventory_data: InventoryData
+var focus_in_backpack: bool = true
+var focused_index: int = 0
 
 ## Adding Item	
 func add_item(item: Item, count: int = 1) -> bool:
@@ -63,8 +65,58 @@ func change_active_slot(direction: int):
 		inventory_data.active_slot_index + direction, 0, InventoryData.WIDTH)
 	update_hotbar_visuals()
 
-## Inventory Toggle z E
+
+
+func update_focus_visuals():
+	# Reset all highlights in both grids
+	for slot in inv_grid.get_children():
+		slot.set_highlight(false, inventory_data.active_transparency, inventory_data.inactive_transparency)
+	for slot in hotbar_grid.get_children():
+		slot.set_highlight(false, inventory_data.active_transparency, inventory_data.inactive_transparency)
+
+	# Highlight the specific focused slot
+	var target_grid = inv_grid if focus_in_backpack else hotbar_grid
+	if target_grid.get_child_count() > focused_index:
+		var slot = target_grid.get_child(focused_index)
+		# Pass true to show the selection frame
+		slot.set_highlight(true, inventory_data.active_transparency, inventory_data.inactive_transparency)
+
+## Navigiranje Inventorijem
+func _navigate_grid(direction: Vector2i):
+	var width = InventoryData.WIDTH
+	
+	if focus_in_backpack:
+		var row = focused_index / width
+		var col = focused_index % width
+		
+		# Horizontal movement
+		col = clampi(col + direction.x, 0, width - 1)
+		
+		# Vertical movement
+		row += direction.y
+		
+		if row < 0: # Stay at top of backpack
+			row = 0
+		elif row >= InventoryData.BACKPACK_HEIGHT: # Jump to Hotbar
+			focus_in_backpack = false
+			focused_index = col # Keep the same column
+			update_focus_visuals()
+			return
+			
+		focused_index = (row * width) + col
+	else:
+		# Navigation inside Hotbar (usually 1 row)
+		focused_index = clampi(focused_index + direction.x, 0, width - 1)
+		
+		if direction.y < 0: # Jump back to Backpack
+			focus_in_backpack = true
+			focused_index = ((InventoryData.BACKPACK_HEIGHT - 1) * width) + focused_index
+			
+	update_focus_visuals()
+
+## Sledenje input-a
 func _input(event):
+	# Mouse Mode
 	if event.is_action_pressed("inventory_toggle"): 
 		inv_panel.visible = !inv_panel.visible 
 		
@@ -73,12 +125,34 @@ func _input(event):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory_data.save_inventory()
-			
+	
+	"""
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			change_active_slot(-1)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			change_active_slot(1)
+	"""
+	
+	# Determine the "Vector" of the move
+	var move = Vector2i.ZERO
+			
+	if event.is_action_pressed("ui_left"):  move.x = -1
+	if event.is_action_pressed("ui_right"): move.x = 1
+	elif inv_panel.visible: # Only navigate if the backpack is open
+		if event.is_action_pressed("ui_up"):   move.y = -1
+		if event.is_action_pressed("ui_down"): move.y = 1
+	
+	# If we actually pressed a direction, run the logic
+	if move != Vector2i.ZERO:
+		_navigate_grid(move)
+	
+	"""
+	if event.is_action_pressed("ui_accept"): # Usually Space/Enter
+		var target_grid = inv_grid if focus_in_backpack else hotbar_grid
+		var slot = target_grid.get_child(focused_index)
+		# Now you can call use_item() or quick_move() on that slot!
+	"""
 
 func populate_grids():
 	for child in inv_grid.get_children(): child.queue_free()
