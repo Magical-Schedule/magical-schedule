@@ -29,4 +29,5 @@ func _on_quit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
+	#GF oz. GameFlow je global script ki ureja tranzicije med scenami in podobne zadeve.
 	GF.load_scene(playScene)
