@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blmsp1xvwlccu"]
 
 [ext_resource type="Script" uid="uid://d0k5xhqa0ifd3" path="res://scripts/item-system/inventory/InventorySlot.gd" id="1_vov34"]
-[ext_resource type="Texture2D" uid="uid://dysfj86mebjl1" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
+[ext_resource type="Texture2D" uid="uid://csjp27jqbx2nu" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
 
 [node name="InventorySlot" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -19,7 +19,6 @@ metadata/_edit_use_anchors_ = true
 [node name="SelectionFrame" type="ColorRect" parent="."]
 visible = false
 layout_mode = 2
-color = Color(0.25940907, 0.14740574, 0.0029876442, 1)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 2

@@ -9,13 +9,14 @@ extends Control
 
 
 var inventory_data: InventoryData
-var active_slot_index: int = 0
+
 
 func _ready():
 	print("creating inventory")
 	inventory_data = InventoryData.load_or_create()
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
+	var active_slot_index = inventory_data.active_slot_index
 	add_item(load("res://scripts/items/Define/mushroom.tres"))
 	populate_grids()
 #naredi inventory
@@ -74,10 +75,10 @@ func update_hotbar_visuals():
 		for i in range(hotbar_grid.get_child_count()):
 			var slot = hotbar_grid.get_child(i)
 			# set_highlight mora biti definiran v InventorySlot.gd
-			slot.set_highlight(i == active_slot_index)
+			slot.set_highlight(i == inventory_data.active_slot_index)
 
 func change_active_slot(direction: int):
 	# wrapi(trenutna_vrednost, min, max) 
 	# Hotbar ima 9 slotov (indeksi 0 do 8)
-	active_slot_index = wrapi(active_slot_index + direction, 0, 9)
+	inventory_data.active_slot_index = wrapi(inventory_data.active_slot_index + direction, 0, 9)
 	update_hotbar_visuals()

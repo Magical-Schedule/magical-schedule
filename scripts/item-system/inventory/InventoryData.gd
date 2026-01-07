@@ -2,6 +2,7 @@ extends Resource
 class_name InventoryData
 
 @export var slots: Array[SlotData] = []
+@export var active_slot_index: int = 0
 
 func save_inventory():
 	ResourceSaver.save(self, "user://inventory_save.tres")
