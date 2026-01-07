@@ -1,5 +1,7 @@
 extends Control
 
+class_name InventoryUI
+
 @export var slot_scene: PackedScene
 @onready var inv_grid = $Panel/VBoxContainer/InventoryGrid
 @onready var hotbar_grid = $Panel2/VBoxContainer/HotbarGrid
@@ -15,7 +17,6 @@ func _ready():
 	inventory_data = InventoryData.load_or_create()
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
-	add_item(load("res://scripts/items/Define/mushroom.tres"))
 	populate_grids()
 #naredi inventory
 func populate_grids():
@@ -29,7 +30,6 @@ func populate_grids():
 		else:
 			hotbar_grid.add_child(slot_visual)
 		slot_visual.set_slot_data(inventory_data.slots[i])
-#inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
 		inv_panel.visible = !inv_panel.visible 
@@ -37,7 +37,7 @@ func _input(event):
 		if inv_panel.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
 			inventory_data.save_inventory()
 			
 func add_item(item: ItemData, count: int = 1):
@@ -50,13 +50,13 @@ func add_item(item: ItemData, count: int = 1):
 			var slot = inventory_data.slots[i]
 			if slot.item_data == item:
 				slot.quantity += count
-				return true # Uspešno dodano
+				return true
 
 	for i in search_order:
 		var slot = inventory_data.slots[i]
 		if slot.item_data == null:
 			slot.item_data = item
 			slot.quantity = count
-			return true # Uspešno dodano
+			return true 
 	
 	return false
