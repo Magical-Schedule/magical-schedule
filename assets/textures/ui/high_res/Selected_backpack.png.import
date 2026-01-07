@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cryh04c80o8qs"
-path="res://.godot/imported/Selected_backpack.png-a7ca6782d6e2121dd0a885e261f572d3.ctex"
+uid="uid://f2eauq13qa5s"
+path="res://.godot/imported/InventorySlot_low.png-8d0c6a294a3dda2fea3a9b1720f221ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/high_res/Selected_backpack.png"
-dest_files=["res://.godot/imported/Selected_backpack.png-a7ca6782d6e2121dd0a885e261f572d3.ctex"]
+source_file="res://assets/UI and logos/Low res/InventorySlot_low.png"
+dest_files=["res://.godot/imported/InventorySlot_low.png-8d0c6a294a3dda2fea3a9b1720f221ab.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dysfj86mebjl1"
-path="res://.godot/imported/Backpack_slot.png-be86ae1aaa1989e31b502ea1bf746236.ctex"
+uid="uid://fshb2i0gy0ag"
+path="res://.godot/imported/ButtonBorder.png-1df11fe216d5c7d54469e10b0e9334f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/high_res/Backpack_slot.png"
-dest_files=["res://.godot/imported/Backpack_slot.png-be86ae1aaa1989e31b502ea1bf746236.ctex"]
+source_file="res://assets/UI and logos/High res/ButtonBorder.png"
+dest_files=["res://.godot/imported/ButtonBorder.png-1df11fe216d5c7d54469e10b0e9334f4.ctex"]
 
 [params]
 

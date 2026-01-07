@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b28lf5cscpl06"
-path="res://.godot/imported/ButtonBorder_low.png-7558c6c76cab5b8f260d74855c911022.ctex"
+uid="uid://bd51ikyglrdu7"
+path="res://.godot/imported/ButtonBorder_low.png-33ef0eaf7bf10a94e6aea5b0a3dfb0ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/low_res/ButtonBorder_low.png"
-dest_files=["res://.godot/imported/ButtonBorder_low.png-7558c6c76cab5b8f260d74855c911022.ctex"]
+source_file="res://assets/UI and logos/Low res/ButtonBorder_low.png"
+dest_files=["res://.godot/imported/ButtonBorder_low.png-33ef0eaf7bf10a94e6aea5b0a3dfb0ab.ctex"]
 
 [params]
 

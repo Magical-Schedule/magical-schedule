@@ -1,9 +1,8 @@
 extends PanelContainer
 
-@onready var icon : TextureRect = $IconTexture
-@onready var background : TextureRect = $SlotBackground
+@onready var Icon: TextureRect = get_node("IconWrapper/TextureRect")
 @onready var quantity_label: Label = $Label
-@onready var selection_frame: Control = $SelectionFrame
+@onready var selection_frame: Control = $SelectionFrame1
 
 var slot_data: SlotData
 

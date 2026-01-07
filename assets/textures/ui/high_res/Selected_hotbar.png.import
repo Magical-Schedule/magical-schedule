@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br0cdna7prtaf"
-path="res://.godot/imported/Selected_hotbar.png-126fd6be737eb0932f2a40bfed54b8fe.ctex"
+uid="uid://cihvj87p0v87h"
+path="res://.godot/imported/MenuBackground.png-587d998a672dee7fbaed7f26461bfc3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/high_res/Selected_hotbar.png"
-dest_files=["res://.godot/imported/Selected_hotbar.png-126fd6be737eb0932f2a40bfed54b8fe.ctex"]
+source_file="res://assets/UI and logos/High res/MenuBackground.png"
+dest_files=["res://.godot/imported/MenuBackground.png-587d998a672dee7fbaed7f26461bfc3b.ctex"]
 
 [params]
 

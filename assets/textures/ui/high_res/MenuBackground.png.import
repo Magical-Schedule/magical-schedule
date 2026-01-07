@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctpdbc1okskyn"
-path="res://.godot/imported/MenuBackground.png-0414b85ab5bcf70707542dde102978ab.ctex"
+uid="uid://bihfor3sny88"
+path="res://.godot/imported/Backpack_slot.png-b162e43fd4510a6a9b2a52d91ccdc4e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/high_res/MenuBackground.png"
-dest_files=["res://.godot/imported/MenuBackground.png-0414b85ab5bcf70707542dde102978ab.ctex"]
+source_file="res://assets/UI and logos/High res/Backpack_slot.png"
+dest_files=["res://.godot/imported/Backpack_slot.png-b162e43fd4510a6a9b2a52d91ccdc4e3.ctex"]
 
 [params]
 
