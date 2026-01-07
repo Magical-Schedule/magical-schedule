@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkb4hj4mrg7vh"]
+[gd_scene load_steps=9 format=3 uid="uid://dkb4hj4mrg7vh"]
 
 [ext_resource type="Texture2D" uid="uid://ctpdbc1okskyn" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_l61h4"]
 [ext_resource type="Script" uid="uid://by554hp572yci" path="res://scenes/Menu/main_menu.gd" id="1_whdkd"]
 [ext_resource type="FontFile" uid="uid://cvfy3l2k8mmtb" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_050rs"]
+[ext_resource type="Texture2D" uid="uid://cdantoxt736id" path="res://assets/UI and logos/High res/Icon.png" id="3_4fyr5"]
 [ext_resource type="Texture2D" uid="uid://cech1eav0str6" path="res://assets/UI and logos/High res/logo.png" id="3_whdkd"]
+[ext_resource type="Script" uid="uid://0ipu877yy7el" path="res://scenes/Menu/panel.gd" id="6_4ms1j"]
 
 [sub_resource type="Theme" id="Theme_4fyr5"]
 Button/font_sizes/font_size = 60
@@ -21,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_whdkd")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="FadedBg" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -32,12 +34,23 @@ patch_margin_top = 540
 patch_margin_right = 960
 patch_margin_bottom = 540
 
+[node name="IconBg" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_4fyr5")
+region_rect = Rect2(0, 0, 1920, 1080)
+patch_margin_left = 960
+patch_margin_top = 540
+patch_margin_right = 960
+patch_margin_bottom = 540
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 926.0
-offset_top = 571.0
-offset_right = 1573.0
-offset_bottom = 867.0
+offset_left = 1064.0
+offset_top = 602.0
+offset_right = 1711.0
+offset_bottom = 898.0
 theme = SubResource("Theme_4fyr5")
 
 [node name="Play" type="Button" parent="VBoxContainer"]
@@ -54,11 +67,12 @@ text = "Quit"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 835.0
-offset_top = 66.0
-offset_right = 1659.0
-offset_bottom = 489.0
+offset_left = 966.0
+offset_top = 111.0
+offset_right = 1790.0
+offset_bottom = 534.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ms1j")
+script = ExtResource("6_4ms1j")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
