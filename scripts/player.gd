@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta:  float) -> void:
 	var direction: Vector2 = Vector2.ZERO
-	direction.x = Input. get_action_strength("move_right") - Input.get_action_strength("move_left")
+	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
 	direction = direction.normalized()
@@ -34,12 +34,17 @@ func interact_with_field():
 	# Če je polje pripravljeno za harvest
 	if nearby_field.can_harvest():
 		var result = nearby_field.harvest()
-		if result. has("item"):
+		if result.has("item"):
 			print("🌾 Harvested:  ", result.amount, "x ", result.item)
 			print("⚠️ TODO:  Add to inventory system")
 	else:
-		# Za testiranje - posadi testno rastlino
-		plant_test_crop()
+		# Za zdaj: zalivanje ali sajenje (testno)
+		if nearby_field.state == Field.FieldState.GROWING:
+			nearby_field.water()
+			print("💧 Polje zalito")
+		else:
+			# Za testiranje - posadi testno rastlino
+			plant_test_crop()
 
 func plant_test_crop():
 	if not nearby_field:
