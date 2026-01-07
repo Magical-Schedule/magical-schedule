@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c1e7hxdotdt8r"]
+
+[ext_resource type="Texture2D" uid="uid://b1nysixmtg7s6" path="res://assets/plants/pots/dry_pot.png" id="1_g1g6t"]
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="1_rkfhs"]
+
+[resource]
+script = ExtResource("1_rkfhs")
+name = "Mushroom"
+icon = ExtResource("1_g1g6t")
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"
