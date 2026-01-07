@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SeedItem" load_steps=6 format=3 uid="uid://vmjrvllue5xw"]
+
+[ext_resource type="Texture2D" uid="uid://d3bb8xsbq4f24" path="res://assets/textures/plants/inventory_items/flower_seed.png" id="1_dhury"]
+[ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="2_q4nyw"]
+[ext_resource type="Script" uid="uid://d3ht0st3r8s4q" path="res://src/items/defenitions/seed_item.gd" id="3_ynxgs"]
+[ext_resource type="Resource" uid="uid://dtu7ilvll3ub" path="res://data/items/yields/yield_flower.tres" id="4_q4nyw"]
+
+[sub_resource type="Resource" id="Resource_mcm8v"]
+script = ExtResource("2_q4nyw")
+is_consumable = false
+metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
+
+[resource]
+script = ExtResource("3_ynxgs")
+yield_item = ExtResource("4_q4nyw")
+name = "Flower Seed"
+icon = ExtResource("1_dhury")
+is_placeable = true
+quantity_data = SubResource("Resource_mcm8v")
+metadata/_custom_type_script = "uid://d3ht0st3r8s4q"

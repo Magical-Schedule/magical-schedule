@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dep2pqc0lkxnw"]
+[gd_scene load_steps=5 format=3 uid="uid://dep2pqc0lkxnw"]
 
 [ext_resource type="Script" uid="uid://iwb3cdwhwwlt" path="res://scripts/item-system/inventory/InventoryUI.gd" id="1_2sbf0"]
 [ext_resource type="PackedScene" uid="uid://blmsp1xvwlccu" path="res://scripts/item-system/inventory/InventorySlot.tscn" id="2_3ckgw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ckgw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ckgw"]
 
-[node name="InventoryUi" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhxqw"]
+
+[node name="InventoryUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,68 +18,60 @@ script = ExtResource("1_2sbf0")
 slot_scene = ExtResource("2_3ckgw")
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="InventoryPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -498.0
-offset_top = -374.0
-offset_right = 502.0
-offset_bottom = 286.0
+offset_left = -500.0
+offset_top = -340.0
+offset_right = 500.0
+offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3ckgw")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3ckgw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -499.0
-offset_top = -330.0
-offset_right = 501.0
-offset_bottom = 330.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 metadata/_edit_lock_ = true
 
-[node name="InventoryGrid" type="GridContainer" parent="Panel/VBoxContainer"]
+[node name="InventoryGrid" type="GridContainer" parent="InventoryPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
-columns = 9
+columns = 8
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="HotbarPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -494.0
-offset_top = -193.0
-offset_right = 506.0
-offset_bottom = -83.0
+offset_left = -500.0
+offset_top = -180.0
+offset_right = 500.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhxqw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 1001.0
-offset_bottom = 109.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HotbarPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 metadata/_edit_lock_ = true
 
-[node name="HotbarGrid" type="GridContainer" parent="Panel2/VBoxContainer"]
+[node name="HotbarGrid" type="GridContainer" parent="HotbarPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_constants/h_separation = 11
 theme_override_constants/v_separation = 10
-columns = 9
+columns = 8

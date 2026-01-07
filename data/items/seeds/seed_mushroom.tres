@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SeedItem" load_steps=6 format=3 uid="uid://h2w0lsa5k75y"]
+
+[ext_resource type="Texture2D" uid="uid://cwilcrnv7obmq" path="res://assets/textures/plants/inventory_items/mushroom_seed.png" id="1_flls7"]
+[ext_resource type="Script" uid="uid://d3ht0st3r8s4q" path="res://src/items/defenitions/seed_item.gd" id="1_xcc7m"]
+[ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="2_fd0jl"]
+[ext_resource type="Resource" uid="uid://bmsxged5wkyf2" path="res://data/items/yields/yield_mushroom.tres" id="4_fd0jl"]
+
+[sub_resource type="Resource" id="Resource_dcmmg"]
+script = ExtResource("2_fd0jl")
+is_consumable = false
+metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
+
+[resource]
+script = ExtResource("1_xcc7m")
+yield_item = ExtResource("4_fd0jl")
+name = "Mushroom Seed"
+icon = ExtResource("1_flls7")
+is_placeable = true
+quantity_data = SubResource("Resource_dcmmg")
+metadata/_custom_type_script = "uid://d3ht0st3r8s4q"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SeedItem" load_steps=6 format=3 uid="uid://0ilkcngkk11u"]
+
+[ext_resource type="Script" uid="uid://d3ht0st3r8s4q" path="res://src/items/defenitions/seed_item.gd" id="1_2xdwo"]
+[ext_resource type="Texture2D" uid="uid://canugx5065jtj" path="res://assets/textures/plants/inventory_items/grass_seed.png" id="1_qt42e"]
+[ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="2_huo1e"]
+[ext_resource type="Resource" uid="uid://ga4752naf2c7" path="res://data/items/yields/yield_grass.tres" id="4_huo1e"]
+
+[sub_resource type="Resource" id="Resource_rw1xg"]
+script = ExtResource("2_huo1e")
+is_consumable = false
+metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
+
+[resource]
+script = ExtResource("1_2xdwo")
+yield_item = ExtResource("4_huo1e")
+name = "Grass Seed"
+icon = ExtResource("1_qt42e")
+is_placeable = true
+quantity_data = SubResource("Resource_rw1xg")
+metadata/_custom_type_script = "uid://d3ht0st3r8s4q"

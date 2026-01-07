@@ -1,12 +1,10 @@
+## SlotData
 extends Resource
 class_name SlotData
 
 signal inventory_updated
 
-@export var item_data: ItemData
-@export var quantity: int = 0:
+@export var item_data: Item: # Points to your new Item.gd
 	set(value):
-		quantity = value
-		if quantity <= 0:
-			item_data = null
+		item_data = value
 		inventory_updated.emit()
