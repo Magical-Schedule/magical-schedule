@@ -29,3 +29,5 @@ Button/styles/normal = ExtResource("2_e6wik")
 Button/styles/pressed = ExtResource("4_o0kih")
 Label/font_sizes/font_size = 120
 Label/fonts/font = ExtResource("1_1lb2d")
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("1_1lb2d")

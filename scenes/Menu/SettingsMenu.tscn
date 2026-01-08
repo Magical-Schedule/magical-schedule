@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfixpbsdq38m0"]
+[gd_scene load_steps=7 format=3 uid="uid://bfixpbsdq38m0"]
 
 [ext_resource type="Texture2D" uid="uid://cihvj87p0v87h" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_07osc"]
 [ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="2_o1lh0"]
+[ext_resource type="Script" uid="uid://cr3hsdnn64ak8" path="res://scripts/Menu/settings_menu.gd" id="2_ttrhs"]
 [ext_resource type="Script" uid="uid://bgos5ep4d2gjw" path="res://scenes/Menu/settings_title.gd" id="3_yr5kf"]
 [ext_resource type="AudioStream" uid="uid://l3j0pocd33yd" path="res://assets/sounds/pick_up_3.wav" id="4_yr5kf"]
 [ext_resource type="StyleBox" uid="uid://b2o5sifcqffk6" path="res://assets/fonts and themes/settingsBackground.tres" id="5_gx5nr"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_o1lh0")
+script = ExtResource("2_ttrhs")
 
 [node name="FadedBg" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -49,14 +51,19 @@ text = "Back to menu"
 layout_mode = 2
 text = "Save changes"
 
+[node name="Reset" type="Button" parent="Confirm & back"]
+layout_mode = 2
+text = "Reset to default"
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
+offset_top = -2.0
 offset_right = 200.0
-offset_bottom = 121.0
+offset_bottom = 119.0
 grow_horizontal = 2
 theme = ExtResource("2_o1lh0")
 text = "Settings"
@@ -96,9 +103,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 30
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Panel/MarginContainer"]
@@ -117,22 +124,21 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master volume"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="ClickSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yr5kf")
+volume_db = -11.918
+pitch_scale = 0.75
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Master volume"
-
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
+[connection signal="pressed" from="Confirm & back/Back" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="Confirm & back/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Confirm & back/Save" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="Confirm & back/Reset" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="Confirm & back/Reset" to="." method="_on_reset_pressed"]

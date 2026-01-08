@@ -3,6 +3,7 @@ extends Control
 #Podrobna navodila za implementacijo menijev so na voljo pod clickup docs.
 @export var fade_time := 1.0
 @export var fade_out := 0.5
+@onready var settingsScene := preload("res://scenes/Menu/SettingsMenu.tscn")
 
 func _ready() -> void:
 	pass
@@ -12,6 +13,10 @@ func _process(delta: float) -> void:
 
 func quit() -> void:
 	get_tree().quit()
+
+func open_settings() -> void:
+	var settings = settingsScene.instantiate()
+	add_child(settings)
 
 func fade_then_load_scene(scene_path: String) -> void:
 	var fade := ColorRect.new()

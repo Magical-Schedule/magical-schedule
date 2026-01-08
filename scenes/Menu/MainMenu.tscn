@@ -124,6 +124,7 @@ pitch_scale = 0.75
 
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
