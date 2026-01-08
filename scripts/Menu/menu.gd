@@ -27,6 +27,7 @@ func fade_then_load_scene(scene_path: String) -> void:
 	tween.tween_property(fade, "modulate:a", 1.0, fade_out)
 	await tween.finished
 	
+	get_tree().paused = false
 	if Engine.has_singleton("GF"):
 		GF.load_scene(scene_path)
 	else:

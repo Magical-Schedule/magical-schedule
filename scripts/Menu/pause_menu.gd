@@ -10,7 +10,10 @@ func _ready():
 	modulate.a = 0.0
 	set_process_input(true)
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	
+
+#Pomembno: Eden izmed starševskih nodov mora imeti skripto ki registrira pause menu, in ob
+#pritisku na ESC pokliče .open_menu (glej playground.gd)
+#Inputi drugače ne pridejo do pause menu, ko je izklopljen.
 func _input(event):
 	if event.is_action_pressed("pause"):
 		print("paused")
