@@ -44,6 +44,24 @@ func _quick_move():
 			target.quantity += slot_data.quantity
 			slot_data.quantity = 0
 			return
+			
+# --- DODANE FUNKCIJE ZA VIZUALNI FEEDBACK ---
+func _ready():
+	# Povežemo signala za zaznavanje miške. 
+	# self.mouse_entered se sproži, ko miška pride nad slot.
+	self.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_exited.connect(_on_mouse_exited)
+	
+func _on_mouse_entered() -> void:
+	# Povečamo svetlost za 30% pa še malo povečamo sloth
+	scale = Vector2(1.05, 1.05)
+	modulate = Color(1.3, 1.3, 1.3)
+
+func _on_mouse_exited() -> void: 
+	# Ko miška zapusti območje, vrnemo vse vrednosti v prvotno stanje
+	scale = Vector2(1.0, 1.0)
+	modulate = Color(1, 1, 1)
+  
 func set_highlight(is_active: bool):
 	if selection_frame:
 		selection_frame.visible = is_active
