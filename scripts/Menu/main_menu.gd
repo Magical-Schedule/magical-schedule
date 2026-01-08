@@ -5,6 +5,7 @@ var playScene : String = "res://Scenes/dev/playground.tscn"
 @onready var image_a: NinePatchRect = $FadedBg
 @onready var image_b: NinePatchRect = $IconBg
 @onready var fadeInRect : ColorRect = $FadeInRect
+@onready var toDesktopConfirm := $ToDesktop
 
 func _ready():
 	image_b.modulate.a = 0.0
@@ -20,7 +21,15 @@ func fade_to_image_b():
 	tween.tween_property(image_b, "modulate:a", 0.8, fade_time)
 
 func _on_quit_pressed() -> void:
-	quit()
+	toDesktopConfirm.popup_centered()
 
 func _on_play_pressed() -> void:
 	fade_then_load_scene(playScene)
+
+
+func _on_to_desktop_canceled() -> void:
+	pass
+
+
+func _on_to_desktop_confirmed() -> void:
+	quit()

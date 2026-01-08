@@ -4,6 +4,8 @@ var menuScene : String = "res://scenes/Menu/MainMenu.tscn"
 
 @export var fade := 0.25
 var is_open := false
+@onready var toMenuConfirm := $ToMenu
+@onready var toDesktopConfirm := $ToDesktop
 
 func _ready():
 	visible = false
@@ -42,12 +44,28 @@ func close_menu():
 
 
 func _on_quit_to_menu_pressed() -> void:
-	fade_then_load_scene(menuScene)
+	toMenuConfirm.popup_centered()
 
 
 func _on_quit_to_desktop_pressed() -> void:
-	quit()
+	toDesktopConfirm.popup_centered()
 
 
 func _on_continue_pressed() -> void:
 	close_menu()
+
+
+func _on_to_menu_canceled() -> void:
+	pass
+
+
+func _on_to_menu_confirmed() -> void:
+	fade_then_load_scene(menuScene)
+
+
+func _on_to_desktop_canceled() -> void:
+	pass
+
+
+func _on_to_desktop_confirmed() -> void:
+	quit()

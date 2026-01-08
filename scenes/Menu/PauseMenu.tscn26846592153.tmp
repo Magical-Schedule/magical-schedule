@@ -77,17 +77,9 @@ oversampling_override = 1.0
 title = "Confirm"
 position = Vector2i(0, 36)
 size = Vector2i(1008, 256)
+visible = true
 ok_button_text = "Yay"
 dialog_text = "Return to Main menu?"
-cancel_button_text = "Nay"
-
-[node name="ToDesktop" type="ConfirmationDialog" parent="."]
-oversampling_override = 1.0
-title = "Confirm"
-position = Vector2i(0, 36)
-size = Vector2i(1008, 256)
-ok_button_text = "Yay"
-dialog_text = "Quit and return to Desktop?"
 cancel_button_text = "Nay"
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
@@ -95,5 +87,3 @@ cancel_button_text = "Nay"
 [connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_quit_to_desktop_pressed"]
 [connection signal="canceled" from="ToMenu" to="." method="_on_to_menu_canceled"]
 [connection signal="confirmed" from="ToMenu" to="." method="_on_to_menu_confirmed"]
-[connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
-[connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]

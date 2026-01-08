@@ -37,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_0n5pj")
 script = ExtResource("1_whdkd")
 
 [node name="FadedBg" type="NinePatchRect" parent="."]
@@ -111,5 +112,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="ToDesktop" type="ConfirmationDialog" parent="."]
+ok_button_text = "Yay"
+dialog_text = "Quit and return to Desktop?"
+cancel_button_text = "Nay"
+
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]
