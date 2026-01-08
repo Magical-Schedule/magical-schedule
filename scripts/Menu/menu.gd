@@ -1,5 +1,6 @@
 extends Control
 
+#Podrobna navodila za implementacijo menijev so na voljo pod clickup docs.
 @export var fade_time := 1.0
 @export var fade_out := 0.5
 

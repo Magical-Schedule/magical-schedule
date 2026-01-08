@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blxtd8bp30nrq"]
+[gd_scene load_steps=6 format=3 uid="uid://blxtd8bp30nrq"]
 
 [ext_resource type="Texture2D" uid="uid://cihvj87p0v87h" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_dc3ep"]
 [ext_resource type="Script" uid="uid://lkbwnjl6gwkx" path="res://scripts/Menu/pause_menu.gd" id="1_i6gef"]
 [ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="2_4d0hc"]
 [ext_resource type="Script" uid="uid://cqavquupunx1n" path="res://scripts/Menu/title.gd" id="4_408r0"]
+[ext_resource type="AudioStream" uid="uid://l3j0pocd33yd" path="res://assets/sounds/pick_up_3.wav" id="5_r32ko"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -90,8 +91,17 @@ ok_button_text = "Yay"
 dialog_text = "Quit and return to Desktop?"
 cancel_button_text = "Nay"
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r32ko")
+volume_db = -11.918
+pitch_scale = 0.75
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit to Menu" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Menu" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_quit_to_desktop_pressed"]
 [connection signal="canceled" from="ToMenu" to="." method="_on_to_menu_canceled"]
 [connection signal="confirmed" from="ToMenu" to="." method="_on_to_menu_confirmed"]

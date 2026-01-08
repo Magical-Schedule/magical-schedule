@@ -6,6 +6,7 @@ var menuScene : String = "res://scenes/Menu/MainMenu.tscn"
 var is_open := false
 @onready var toMenuConfirm := $ToMenu
 @onready var toDesktopConfirm := $ToDesktop
+@onready var click := $ClickSound
 
 func _ready():
 	visible = false
@@ -69,3 +70,7 @@ func _on_to_desktop_canceled() -> void:
 
 func _on_to_desktop_confirmed() -> void:
 	quit()
+	
+	
+func _on_any_button_pressed():
+	click.play()

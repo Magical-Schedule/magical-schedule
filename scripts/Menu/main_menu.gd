@@ -1,11 +1,13 @@
 extends "res://scripts/Menu/menu.gd"
 
+#Pot do scene, ki jo zažene.
 var playScene : String = "res://Scenes/dev/playground.tscn"
 
 @onready var image_a: NinePatchRect = $FadedBg
 @onready var image_b: NinePatchRect = $IconBg
 @onready var fadeInRect : ColorRect = $FadeInRect
 @onready var toDesktopConfirm := $ToDesktop
+@onready var click := $ClickSound
 
 func _ready():
 	image_b.modulate.a = 0.0
@@ -35,3 +37,7 @@ func _on_to_desktop_canceled() -> void:
 
 func _on_to_desktop_confirmed() -> void:
 	quit()
+
+
+func _on_any_button_pressed():
+	click.play()
