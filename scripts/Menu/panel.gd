@@ -37,7 +37,7 @@ func slide_in():
 
 func start_floating():
 	var tween = create_tween()
-	tween.set_loops()  # infinite loop
+	tween.set_loops()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN_OUT)
 

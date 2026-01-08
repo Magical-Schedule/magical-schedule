@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 @export var fade_time := 1.0
 @export var fade_out := 0.5
