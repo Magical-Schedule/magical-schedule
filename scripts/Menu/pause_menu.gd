@@ -8,6 +8,8 @@ var is_open := false
 @onready var toDesktopConfirm := $ToDesktop
 @onready var click := $ClickSound
 
+var previous_mouse_mode
+
 func _ready():
 	visible = false
 	modulate.a = 0.0
@@ -26,6 +28,8 @@ func _input(event):
 			open_menu()
 
 func open_menu():
+	previous_mouse_mode = Input.get_mouse_mode()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	is_open = true
 	visible = true
 	get_tree().paused = true
@@ -34,6 +38,7 @@ func open_menu():
 	tween.tween_property(self, "modulate:a", 1.0, fade)
 
 func close_menu():
+	Input.set_mouse_mode(previous_mouse_mode)
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, fade)
 	
