@@ -20,8 +20,10 @@ func fade_to_image_b():
 	tween.tween_property(image_a, "modulate:a", 0.0, fade_time)
 	tween.tween_property(image_b, "modulate:a", 0.8, fade_time)
 
+
 func _on_quit_pressed() -> void:
 	toDesktopConfirm.popup_centered()
+
 
 func _on_play_pressed() -> void:
 	fade_then_load_scene(playScene)
