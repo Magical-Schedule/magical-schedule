@@ -125,3 +125,5 @@ func execute_harvest():
 				print("✅ Uspešno ubrano: ", result.item)
 			else:
 				print("❌ Nedostaje resurs: ", item_path)
+				
+#update
