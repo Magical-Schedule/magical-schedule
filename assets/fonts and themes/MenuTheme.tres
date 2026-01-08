@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://y0dbpcg64xsj"]
 
-[ext_resource type="FontFile" uid="uid://cvfy3l2k8mmtb" path="res://assets/fonts/Jersey15-Regular.ttf" id="1_1lb2d"]
+[ext_resource type="FontFile" uid="uid://cvfy3l2k8mmtb" path="res://assets/fonts and themes/Jersey15-Regular.ttf" id="1_1lb2d"]
 
 [resource]
 Button/font_sizes/font_size = 60

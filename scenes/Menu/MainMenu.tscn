@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://dkb4hj4mrg7vh"]
 
 [ext_resource type="Texture2D" uid="uid://ctpdbc1okskyn" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_l61h4"]
-[ext_resource type="Script" uid="uid://by554hp572yci" path="res://scenes/Menu/main_menu.gd" id="1_whdkd"]
+[ext_resource type="Script" uid="uid://by554hp572yci" path="res://scripts/Menu/main_menu.gd" id="1_whdkd"]
 [ext_resource type="Texture2D" uid="uid://cdantoxt736id" path="res://assets/UI and logos/High res/Icon.png" id="3_4fyr5"]
 [ext_resource type="Texture2D" uid="uid://cech1eav0str6" path="res://assets/UI and logos/High res/logo.png" id="3_whdkd"]
-[ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://scenes/Menu/MenuTheme.tres" id="4_0n5pj"]
-[ext_resource type="Script" uid="uid://cr7x1s3hojh27" path="res://scenes/Menu/main_menu_buttons.gd" id="5_0n5pj"]
-[ext_resource type="Script" uid="uid://0ipu877yy7el" path="res://scenes/Menu/panel.gd" id="6_4ms1j"]
+[ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="4_0n5pj"]
+[ext_resource type="Script" uid="uid://cr7x1s3hojh27" path="res://scripts/Menu/main_menu_buttons.gd" id="5_0n5pj"]
+[ext_resource type="Script" uid="uid://0ipu877yy7el" path="res://scripts/Menu/panel.gd" id="6_4ms1j"]
 
 [sub_resource type="Gradient" id="Gradient_0n5pj"]
 offsets = PackedFloat32Array(0, 0.26415095, 0.5254237, 0.7830189, 1)

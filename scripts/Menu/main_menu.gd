@@ -1,4 +1,4 @@
-extends "res://scenes/Menu/menu.gd"
+extends "res://scripts/Menu/menu.gd"
 
 var playScene : String = "res://Scenes/dev/playground.tscn"
 
