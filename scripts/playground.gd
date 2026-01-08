@@ -1,9 +1,9 @@
 extends Node2D
 
-var pauseMenu
+@onready var pauseMenu = get_node("CanvasLayer/PauseMenu")
 
 func _ready() -> void:
-	pauseMenu = get_node("CanvasLayer/PauseMenu")
+	pass
 
 
 func _process(delta: float) -> void:

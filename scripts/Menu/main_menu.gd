@@ -4,10 +4,12 @@ var playScene : String = "res://Scenes/dev/playground.tscn"
 
 @onready var image_a: NinePatchRect = $FadedBg
 @onready var image_b: NinePatchRect = $IconBg
+@onready var fadeInRect : ColorRect = $FadeInRect
 
 func _ready():
 	image_b.modulate.a = 0.0
-	
+	var tween := create_tween()
+	tween.tween_property(fadeInRect, "modulate:a", 0.0, 0.5)
 	await get_tree().create_timer(0.5).timeout
 	fade_to_image_b()
 

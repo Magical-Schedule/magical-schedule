@@ -40,9 +40,12 @@ grow_vertical = 2
 script = ExtResource("1_whdkd")
 
 [node name="FadedBg" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_l61h4")
 region_rect = Rect2(0, 0, 1920, 1080)
 patch_margin_left = 960
@@ -96,6 +99,17 @@ offset_right = 1790.0
 offset_bottom = 534.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ms1j")
 script = ExtResource("6_4ms1j")
+
+[node name="FadeInRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]

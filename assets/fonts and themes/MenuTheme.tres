@@ -1,9 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://y0dbpcg64xsj"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://y0dbpcg64xsj"]
 
 [ext_resource type="FontFile" uid="uid://cvfy3l2k8mmtb" path="res://assets/fonts and themes/Jersey15-Regular.ttf" id="1_1lb2d"]
+[ext_resource type="StyleBox" uid="uid://b63jmm4oyoehy" path="res://assets/fonts and themes/confirmButton.tres" id="2_e6wik"]
+[ext_resource type="StyleBox" uid="uid://cfhovs21g3cl2" path="res://assets/fonts and themes/confirmButtonHover.tres" id="2_hbj63"]
+[ext_resource type="StyleBox" uid="uid://dshxy4wbpcf6f" path="res://assets/fonts and themes/confirmButtonPressed.tres" id="4_o0kih"]
 
 [resource]
+Button/constants/outline_size = 4
 Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_1lb2d")
+Button/styles/hover = ExtResource("2_hbj63")
+Button/styles/normal = ExtResource("2_e6wik")
+Button/styles/pressed = ExtResource("4_o0kih")
 Label/font_sizes/font_size = 150
 Label/fonts/font = ExtResource("1_1lb2d")
