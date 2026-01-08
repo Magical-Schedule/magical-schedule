@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://lkbwnjl6gwkx" path="res://scripts/Menu/pause_menu.gd" id="1_i6gef"]
 [ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="2_4d0hc"]
 [ext_resource type="Script" uid="uid://cqavquupunx1n" path="res://scripts/Menu/title.gd" id="4_408r0"]
-[ext_resource type="AudioStream" uid="uid://l3j0pocd33yd" path="res://assets/sounds/pick_up_3.wav" id="5_r32ko"]
+[ext_resource type="AudioStream" uid="uid://benxi18pbls54" path="res://assets/sounds/pick_up_1.wav" id="5_r32ko"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -93,17 +93,22 @@ cancel_button_text = "Nay"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_r32ko")
-volume_db = -11.918
-pitch_scale = 0.75
+volume_db = -25.0
+pitch_scale = 0.65
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Menu" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Menu" to="." method="_on_quit_to_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_quit_to_desktop_pressed"]
 [connection signal="canceled" from="ToMenu" to="." method="_on_to_menu_canceled"]
+[connection signal="canceled" from="ToMenu" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ToMenu" to="." method="_on_any_button_pressed"]
 [connection signal="confirmed" from="ToMenu" to="." method="_on_to_menu_confirmed"]
 [connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_any_button_pressed"]
 [connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]

@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="4_0n5pj"]
 [ext_resource type="Script" uid="uid://cr7x1s3hojh27" path="res://scripts/Menu/main_menu_buttons.gd" id="5_0n5pj"]
 [ext_resource type="Script" uid="uid://0ipu877yy7el" path="res://scripts/Menu/panel.gd" id="6_4ms1j"]
-[ext_resource type="AudioStream" uid="uid://l3j0pocd33yd" path="res://assets/sounds/pick_up_3.wav" id="9_3m84m"]
+[ext_resource type="AudioStream" uid="uid://benxi18pbls54" path="res://assets/sounds/pick_up_1.wav" id="8_i0awj"]
 
 [sub_resource type="Gradient" id="Gradient_0n5pj"]
 offsets = PackedFloat32Array(0, 0.26415095, 0.5254237, 0.7830189, 1)
@@ -118,9 +118,9 @@ dialog_text = "Quit and return to Desktop?"
 cancel_button_text = "Nay"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_3m84m")
-volume_db = -11.918
-pitch_scale = 0.75
+stream = ExtResource("8_i0awj")
+volume_db = -25.0
+pitch_scale = 0.65
 
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
@@ -129,4 +129,6 @@ pitch_scale = 0.75
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_any_button_pressed"]
 [connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]

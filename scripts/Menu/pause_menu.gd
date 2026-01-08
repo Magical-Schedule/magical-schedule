@@ -74,3 +74,7 @@ func _on_to_desktop_confirmed() -> void:
 	
 func _on_any_button_pressed():
 	click.play()
+
+
+func _on_settings_pressed() -> void:
+	open_settings()

@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cihvj87p0v87h" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_07osc"]
 [ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="2_o1lh0"]
 [ext_resource type="Script" uid="uid://cr3hsdnn64ak8" path="res://scripts/Menu/settings_menu.gd" id="2_ttrhs"]
-[ext_resource type="Script" uid="uid://bgos5ep4d2gjw" path="res://scenes/Menu/settings_title.gd" id="3_yr5kf"]
-[ext_resource type="AudioStream" uid="uid://l3j0pocd33yd" path="res://assets/sounds/pick_up_3.wav" id="4_yr5kf"]
+[ext_resource type="Script" uid="uid://bgos5ep4d2gjw" path="res://scripts/Menu/settings_title.gd" id="3_yr5kf"]
 [ext_resource type="StyleBox" uid="uid://b2o5sifcqffk6" path="res://assets/fonts and themes/settingsBackground.tres" id="5_gx5nr"]
+[ext_resource type="AudioStream" uid="uid://benxi18pbls54" path="res://assets/sounds/pick_up_1.wav" id="6_ttrhs"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -47,10 +47,6 @@ theme_override_constants/separation = 40
 layout_mode = 2
 text = "Back to menu"
 
-[node name="Save" type="Button" parent="Confirm & back"]
-layout_mode = 2
-text = "Save changes"
-
 [node name="Reset" type="Button" parent="Confirm & back"]
 layout_mode = 2
 text = "Reset to default"
@@ -70,11 +66,6 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_yr5kf")
-
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yr5kf")
-volume_db = -11.918
-pitch_scale = 0.75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(1100, 650)
@@ -120,25 +111,39 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterVolLabel" type="RichTextLabel" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterVolSlider" type="HSlider" parent="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+value = 100.0
 
-[node name="ClickSound2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yr5kf")
-volume_db = -11.918
-pitch_scale = 0.75
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ttrhs")
+volume_db = -25.0
+pitch_scale = 0.65
+
+[node name="ConfirmReset" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Confirm"
+position = Vector2i(0, 36)
+size = Vector2i(1008, 256)
+ok_button_text = "Yay"
+dialog_text = "Reset all settings to defaults?"
+cancel_button_text = "Nay"
 
 [connection signal="pressed" from="Confirm & back/Back" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="Confirm & back/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Confirm & back/Save" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="Confirm & back/Reset" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="Confirm & back/Reset" to="." method="_on_reset_pressed"]
+[connection signal="value_changed" from="VBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/MasterVolSlider" to="." method="_on_master_vol_slider_value_changed"]
+[connection signal="canceled" from="ConfirmReset" to="." method="_on_any_button_pressed"]
+[connection signal="canceled" from="ConfirmReset" to="." method="_on_confirm_reset_canceled"]
+[connection signal="confirmed" from="ConfirmReset" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ConfirmReset" to="." method="_on_confirm_reset_confirmed"]

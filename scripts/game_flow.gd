@@ -3,7 +3,6 @@ extends Node
 @export var main_menu_scene: PackedScene
 var current_scene: Node = null
 
-
 func _ready():
 	load_main_menu()
 
