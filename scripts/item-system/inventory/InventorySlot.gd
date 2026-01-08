@@ -2,6 +2,7 @@ extends PanelContainer
 
 @onready var Icon: TextureRect = get_node("IconWrapper/TextureRect")
 @onready var quantity_label: Label = $Label
+@onready var selection_frame: Control = $SelectionFrame1
 
 var slot_data: SlotData
 
@@ -60,3 +61,7 @@ func _on_mouse_exited() -> void:
 	# Ko miška zapusti območje, vrnemo vse vrednosti v prvotno stanje
 	scale = Vector2(1.0, 1.0)
 	modulate = Color(1, 1, 1)
+  
+func set_highlight(is_active: bool):
+	if selection_frame:
+		selection_frame.visible = is_active
