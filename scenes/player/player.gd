@@ -8,20 +8,61 @@ var nearby_field: Field = null
 @onready var inventory_ui: Control = null
 @onready var animated_sprite = $AnimatedSprite2D
 
+@onready var steps_sfx: AudioStreamPlayer = $Walk_sfx
+
+var step_sounds = [
+	preload("res://assets/sounds/korak_suho_1.wav"),
+	preload("res://assets/sounds/korak_suho_2.wav"),
+	preload("res://assets/sounds/korak_suho_3.wav"),
+	preload("res://assets/sounds/korak_suho_4.wav")
+]
+
 func _ready() -> void:
 	# Najdi InventoryUI v sceni
 	inventory_ui = get_tree().get_first_node_in_group("inventory_ui")
 	if not inventory_ui:
 		print("⚠️ InventoryUI not found in scene - will add to inventory later")
 
+func play_random_step():
+	if steps_sfx == null or step_sounds.is_empty():
+		return
+		
+	# Izberi naključen zvok iz seznama
+	var random_index = randi() % step_sounds.size()
+	steps_sfx.stream = step_sounds[random_index]
+	
+	# Malo spremeni pitch, da se čuje normalno
+	steps_sfx.pitch_scale = randf_range(1.6, 1.8)
+	steps_sfx.play()
+	
 func _physics_process(_delta:  float) -> void:
-	var direction: Vector2 = Vector2.ZERO
-	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
-	direction = direction.normalized()
-
-	velocity = move_speed * direction
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if direction != Vector2.ZERO:
+		velocity = direction * move_speed
+		
+		if steps_sfx and not steps_sfx.playing:
+			play_random_step()
+			
+		if abs(direction.x) > abs(direction.y):
+			animated_sprite.play("Walking")
+			animated_sprite.flip_h = direction.x < 0
+		else:
+			if direction.y > 0:
+				animated_sprite.play("walking-down")
+			else:
+				animated_sprite.play("walking-up")
+		if direction.y != 0 and direction.x == 0:
+			animated_sprite.flip_h = false
+	
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, move_speed)
+		animated_sprite.play("Idle")
+		
+		if steps_sfx and steps_sfx.playing:
+			steps_sfx.stop()
+		
 	move_and_slide()
 
 func _input(event):

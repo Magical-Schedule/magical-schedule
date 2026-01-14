@@ -13,6 +13,9 @@ const MOISTURE_DECAY := 0.02
 @onready var plant_sprite: Sprite2D = $PlantSprite
 @onready var interaction_area: Area2D = $InteractionArea
 
+@onready var planting_sfx: AudioStreamPlayer = $Plant_sfx
+@onready var harvest_sfx: AudioStreamPlayer = $Harvest_sfx
+
 var state: FieldState = FieldState.EMPTY
 var crop: Crop = null
 
@@ -29,7 +32,7 @@ func _ready():
 	plant_sprite.scale = Vector2(2.5, 2.5)
 	
 	# Premakni rastlino navzgor
-	plant_sprite.position.y = -64
+	plant_sprite.position.y = -74
 	
 	if interaction_area:
 		interaction_area.body_entered.connect(_on_player_entered)
@@ -80,8 +83,13 @@ func plant_seed(crop_data: Crop):
 	moisture = 1.0
 	pot_sprite.texture = load(WET_POT)
 	
+		
 	plant_sprite.visible = true
 	update_plant_sprite()
+	if planting_sfx:
+		planting_sfx.play()
+		await get_tree().create_timer(0.5).timeout
+		planting_sfx.stop()
 	state = FieldState.GROWING
 	print("🌱 Planted: ", crop.crop_name)
 
@@ -106,6 +114,11 @@ func can_harvest() -> bool:
 func harvest() -> Dictionary:
 	if state != FieldState.READY or not crop:
 		return {}
+	
+
+	if harvest_sfx:
+		harvest_sfx.play()
+
 	
 	# Izračunaj yield (random bonus)
 	var yield_amount := int((crop.base_yield + randi() % 3) * soil_quality)
