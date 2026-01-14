@@ -15,7 +15,8 @@ var player_is_in_chat_zone = false
 enum{
 	IDLE,
 	NEW_DIR,
-	MOVE
+	MOVE,
+	SELL
 }
 
 func _ready():
