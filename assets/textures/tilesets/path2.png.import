@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2il8x1ijcovx"
-path="res://.godot/imported/wet_pot.png-9ea51b6c9414566a5e6d428f753af1aa.ctex"
+uid="uid://geat7s0uydql"
+path="res://.godot/imported/path2.png-a7ac0a872b905b5653e2320580fe7ae1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/pots/wet_pot.png"
-dest_files=["res://.godot/imported/wet_pot.png-9ea51b6c9414566a5e6d428f753af1aa.ctex"]
+source_file="res://assets/textures/tilesets/path2.png"
+dest_files=["res://.godot/imported/path2.png-a7ac0a872b905b5653e2320580fe7ae1.ctex"]
 
 [params]
 

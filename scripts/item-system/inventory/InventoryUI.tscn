@@ -1,20 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dep2pqc0lkxnw"]
+[gd_scene load_steps=6 format=3 uid="uid://dep2pqc0lkxnw"]
 
 [ext_resource type="Script" uid="uid://iwb3cdwhwwlt" path="res://scripts/item-system/inventory/InventoryUI.gd" id="1_2sbf0"]
 [ext_resource type="PackedScene" uid="uid://blmsp1xvwlccu" path="res://scripts/item-system/inventory/InventorySlot.tscn" id="2_3ckgw"]
-[ext_resource type="Texture2D" uid="uid://dkd2ddf6uhx53" path="res://assets/UI and logos/High res/InventoryBG_cropped.png" id="3_qhxqw"]
-[ext_resource type="Texture2D" uid="uid://j51yrb8qwi8s" path="res://assets/UI and logos/High res/InvetoryBG_hotbar.png" id="4_6jawy"]
+[ext_resource type="Texture2D" uid="uid://dkd2ddf6uhx53" path="res://assets/textures/ui/high_res/InventoryBG_cropped.png" id="3_qhxqw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6jawy"]
 texture = ExtResource("3_qhxqw")
 modulate_color = Color(1, 1, 1, 0.47058824)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhxqw"]
-texture = ExtResource("4_6jawy")
-texture_margin_left = 40.0
-texture_margin_top = 40.0
-texture_margin_right = 40.0
-texture_margin_bottom = 40.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhxqw"]
 
@@ -50,7 +42,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 metadata/_edit_lock_ = true
 
-[node name="InventoryGrid" type="GridContainer" parent="Panel/VBoxContainer"]
+[node name="InventoryGrid" type="GridContainer" parent="InventoryPanel/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4

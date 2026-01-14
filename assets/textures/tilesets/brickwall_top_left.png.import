@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv5uqss6sqnm6"
-path="res://.godot/imported/growing_animation_shroom.png-d2990a7fc4e5ebe632e3231ddcd5b42c.ctex"
+uid="uid://48y1t32l16t4"
+path="res://.godot/imported/brickwall_top_left.png-3b4131f5656ce8ebc77231a42b1db0b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/growing_animations/growing_animation_shroom.png"
-dest_files=["res://.godot/imported/growing_animation_shroom.png-d2990a7fc4e5ebe632e3231ddcd5b42c.ctex"]
+source_file="res://assets/textures/tilesets/brickwall_top_left.png"
+dest_files=["res://.godot/imported/brickwall_top_left.png-3b4131f5656ce8ebc77231a42b1db0b7.ctex"]
 
 [params]
 

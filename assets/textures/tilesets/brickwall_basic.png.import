@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7grvkbm6jdbx"
-path="res://.godot/imported/MenuBackground_low.png-08786f9b7f828a27254fc8eb5c2e0517.ctex"
+uid="uid://dj6twx7cc8st8"
+path="res://.godot/imported/brickwall_basic.png-f046f06e9400466f595e4e731e69d589.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI and logos/Low res/MenuBackground_low.png"
-dest_files=["res://.godot/imported/MenuBackground_low.png-08786f9b7f828a27254fc8eb5c2e0517.ctex"]
+source_file="res://assets/textures/tilesets/brickwall_basic.png"
+dest_files=["res://.godot/imported/brickwall_basic.png-f046f06e9400466f595e4e731e69d589.ctex"]
 
 [params]
 

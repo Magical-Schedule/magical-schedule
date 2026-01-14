@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dodw175rfy3dm"
-path="res://.godot/imported/falling_animations.png-40aa949a7481928abba3c84fbabf8674.ctex"
+uid="uid://cx1o0yc7adkpa"
+path="res://.godot/imported/brickwall_top.png-6e1c7239c0fd6cdf98fa6c02f3f2d2fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/falling_animations/falling_animations.png"
-dest_files=["res://.godot/imported/falling_animations.png-40aa949a7481928abba3c84fbabf8674.ctex"]
+source_file="res://assets/textures/tilesets/brickwall_top.png"
+dest_files=["res://.godot/imported/brickwall_top.png-6e1c7239c0fd6cdf98fa6c02f3f2d2fa.ctex"]
 
 [params]
 

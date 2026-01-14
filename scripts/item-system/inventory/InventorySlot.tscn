@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0k5xhqa0ifd3" path="res://scripts/item-system/inventory/InventorySlot.gd" id="1_vov34"]
 [ext_resource type="Texture2D" uid="uid://oplqw0kyqwc2" path="res://assets/UI and logos/Low res/SelectedSlot_low.png" id="2_screb"]
-[ext_resource type="Texture2D" uid="uid://bihfor3sny88" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
+[ext_resource type="Texture2D" uid="uid://bihfor3sny88" path="res://assets/textures/ui/high_res/MenuBackground.png" id="2_wo1sd"]
 
 [node name="InventorySlot" type="PanelContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -26,7 +26,7 @@ layout_mode = 2
 texture = ExtResource("2_wo1sd")
 expand_mode = 1
 
-[node name="SelectionFrame" type="ReferenceRect" parent="."]
+[node name="SelectionFrame2" type="ReferenceRect" parent="."]
 visible = false
 layout_mode = 2
 

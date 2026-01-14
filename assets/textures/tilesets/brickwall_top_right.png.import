@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4a8xudmadtsc"
-path="res://.godot/imported/SelectedHotbar_low.png-043a1dc041ea1552961b2adee6fd3ed5.ctex"
+uid="uid://fvnow68g3sva"
+path="res://.godot/imported/brickwall_top_right.png-3fed120ede297a7396636c9df77b9b30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI and logos/Low res/SelectedHotbar_low.png"
-dest_files=["res://.godot/imported/SelectedHotbar_low.png-043a1dc041ea1552961b2adee6fd3ed5.ctex"]
+source_file="res://assets/textures/tilesets/brickwall_top_right.png"
+dest_files=["res://.godot/imported/brickwall_top_right.png-3fed120ede297a7396636c9df77b9b30.ctex"]
 
 [params]
 

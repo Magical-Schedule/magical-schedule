@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfcsbed1fadqk"
-path="res://.godot/imported/growing_animations.png-a604259b68e2dcb129c28de35f5aef64.ctex"
+uid="uid://dqmbdkmqfwn6w"
+path="res://.godot/imported/floor.png-52f766a166fdb6cab0d40944e20392b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/growing_animations/growing_animations.png"
-dest_files=["res://.godot/imported/growing_animations.png-a604259b68e2dcb129c28de35f5aef64.ctex"]
+source_file="res://assets/textures/tilesets/floor.png"
+dest_files=["res://.godot/imported/floor.png-52f766a166fdb6cab0d40944e20392b0.ctex"]
 
 [params]
 

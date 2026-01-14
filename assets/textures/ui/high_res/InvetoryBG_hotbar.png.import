@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://j51yrb8qwi8s"
-path="res://.godot/imported/InvetoryBG_hotbar.png-fe2f8076ab69ef68aebc2688bf53cb1c.ctex"
+path="res://.godot/imported/InvetoryBG_hotbar.png-e9d68356672ed9fd35183e4a9b8525c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI and logos/High res/InvetoryBG_hotbar.png"
-dest_files=["res://.godot/imported/InvetoryBG_hotbar.png-fe2f8076ab69ef68aebc2688bf53cb1c.ctex"]
+source_file="res://assets/textures/ui/high_res/InvetoryBG_hotbar.png"
+dest_files=["res://.godot/imported/InvetoryBG_hotbar.png-e9d68356672ed9fd35183e4a9b8525c0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjegb4y0wthgj"
-path="res://.godot/imported/dry_pot.png-13595b613724413b0762cc4dd60094c4.ctex"
+uid="uid://c6xd3phv4xl7"
+path="res://.godot/imported/brickwall_from_top.png-acd43ecc6fba9ab71c3aa56d97b01dcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/pots/dry_pot.png"
-dest_files=["res://.godot/imported/dry_pot.png-13595b613724413b0762cc4dd60094c4.ctex"]
+source_file="res://assets/textures/tilesets/brickwall_from_top.png"
+dest_files=["res://.godot/imported/brickwall_from_top.png-acd43ecc6fba9ab71c3aa56d97b01dcd.ctex"]
 
 [params]
 
