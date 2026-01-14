@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7rq5ygdacqyu"]
+
+[ext_resource type="Texture2D" uid="uid://vqsenki6woiq" path="res://scenes/player/assets/civilian_female.png" id="1_q4h0x"]
+
+[node name="Civilian" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q4h0x")
