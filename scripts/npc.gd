@@ -9,6 +9,7 @@ var start_pos
 var is_roaming = true
 var is_chatting = false
 
+
 var player
 var player_is_in_chat_zone = false
 enum{
@@ -18,9 +19,11 @@ enum{
 }
 
 func _ready():
+	$SELL.visible = false
 	randomize()
 	start_pos = position
 func _process(delta):
+	
 	if current_state == 0 or current_state == 1:
 		$AnimatedSprite2D.play("idle")
 	elif current_state == 2 and !is_chatting:
@@ -59,11 +62,13 @@ func move(delta):
 
 
 func _on_chat_colliosion_body_entered(body: Node2D) -> void:
+	$SELL.visible = true
 	if body.has_method("player"):
 		player = body
 		player_is_in_chat_zone = true
 
 func _on_chat_colliosion_body_exited(body: Node2D) -> void:
+	$SELL.visible = false
 	if body.has_method("player"):
 		player_is_in_chat_zone = false
 
