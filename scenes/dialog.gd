@@ -1,7 +1,7 @@
 extends Control
 
 signal dialogue_finished
-
+signal selling_started
 @export_file("*.json") var d_file
 
 var dialogue = []
@@ -52,7 +52,7 @@ func next_script():
 
 func _on_yes_button_pressed() -> void:
 	$Selling_interest.visable = false
-	emit_signal("sell_menue_closed")
+	emit_signal("selling_started")
 	
 	
 
