@@ -29,7 +29,7 @@ func _ready():
 	plant_sprite.scale = Vector2(2.5, 2.5)
 	
 	# Premakni rastlino navzgor
-	plant_sprite.position.y = -64
+	plant_sprite.position.y = -74
 	
 	if interaction_area:
 		interaction_area.body_entered.connect(_on_player_entered)
