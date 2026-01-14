@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byd2cxb2mlnfh"
-path="res://.godot/imported/sprite.png-81ece62e9a466055547c5497001d8831.ctex"
+uid="uid://b4ugcyy2n2203"
+path="res://.godot/imported/asphalt_bottom_left.png-b36f9e073aaaa65b26fb6cbebfcfaa07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/sprite.png"
-dest_files=["res://.godot/imported/sprite.png-81ece62e9a466055547c5497001d8831.ctex"]
+source_file="res://assets/tilesets/asphalt_bottom_left.png"
+dest_files=["res://.godot/imported/asphalt_bottom_left.png-b36f9e073aaaa65b26fb6cbebfcfaa07.ctex"]
 
 [params]
 

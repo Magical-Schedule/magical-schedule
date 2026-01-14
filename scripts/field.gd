@@ -10,8 +10,8 @@ const MOISTURE_DECAY := 0.02
 
 
 @onready var pot_sprite: Sprite2D = $PotSprite
-@onready var plant_sprite:  Sprite2D = $PlantSprite
-@onready var interaction_area:  Area2D = $InteractionArea
+@onready var plant_sprite: Sprite2D = $PlantSprite
+@onready var interaction_area: Area2D = $InteractionArea
 
 var state: FieldState = FieldState.EMPTY
 var crop: Crop = null
@@ -25,17 +25,21 @@ func _ready():
 	reset_field()
 	plant_sprite.visible = false
 	
-	# Povečaj sprite-e
-	pot_sprite.scale = Vector2(2, 2)
-	plant_sprite.scale = Vector2(2, 2)
+	pot_sprite.scale = Vector2(2.5, 2.5)
+	plant_sprite.scale = Vector2(2.5, 2.5)
 	
 	# Premakni rastlino navzgor
 	plant_sprite.position.y = -64
 	
-	# Poveži signale za detekcijo igralca
 	if interaction_area:
 		interaction_area.body_entered.connect(_on_player_entered)
 		interaction_area.body_exited.connect(_on_player_exited)
+		
+	var test_crop = Crop.new()
+	test_crop.crop_name = "flower" 
+	test_crop.time_per_stage = 2.0 
+	
+	plant_seed(test_crop)
 
 func _process(delta):
 	if state == FieldState.GROWING and crop:
@@ -76,23 +80,20 @@ func plant_seed(crop_data: Crop):
 	moisture = 1.0
 	pot_sprite.texture = load(WET_POT)
 	
-	# Prikaži prvo fazo rastline
 	plant_sprite.visible = true
 	update_plant_sprite()
 	state = FieldState.GROWING
-	print("🌱 Planted:  ", crop.crop_name)
+	print("🌱 Planted: ", crop.crop_name)
 
 func update_plant_sprite():
 	if not crop:
 		return
 	
-	# Nastavi spritesheet frame glede na stage
 	plant_sprite.texture = load("res://assets/plants/growing_animations/growing_animations.png")
-	plant_sprite.hframes = 4  # 4 faze horizontalno
-	plant_sprite.vframes = 4  # 4 različne rastline vertikalno
 	
-	# TODO: Mapirati crop_name na row index
-	# Za zdaj uporabi row 0 (prva rastlina)
+	plant_sprite.hframes = 4 
+	plant_sprite.vframes = 4 
+	
 	var crop_row: int = 0
 	plant_sprite.frame = crop_row * plant_sprite.hframes + crop.current_stage
 
@@ -136,3 +137,26 @@ func _on_player_exited(body):
 	if body is Player:
 		body.nearby_field = null
 		print("🔴 Igralec zapustil območje polja")
+		
+func _unhandled_input(event):
+	if event is InputEventKey and event.keycode == KEY_E and event.pressed:
+		if state == FieldState.READY:
+			for body in interaction_area.get_overlapping_bodies():
+				if body is Player:
+					execute_harvest()
+
+func execute_harvest():
+	var result = harvest()
+	if not result.is_empty():
+		var inv_ui = get_tree().root.find_child("InventoryUi", true, false)
+		if inv_ui:
+			var item_path = "res://scripts/items/Define/" + result.item + ".tres"
+			
+			if ResourceLoader.exists(item_path):
+				var item_resource = load(item_path)
+				inv_ui.add_item(item_resource, result.amount)
+				print("✅ Uspešno ubrano: ", result.item)
+			else:
+				print("❌ Nedostaje resurs: ", item_path)
+				
+#update

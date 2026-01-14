@@ -6,6 +6,7 @@ var nearby_field: Field = null
 
 # Referenca na InventoryUI (za kasneje)
 @onready var inventory_ui: Control = null
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	# Najdi InventoryUI v sceni

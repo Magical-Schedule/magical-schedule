@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://coeol1ciotl2s"]
+
+[ext_resource type="Texture2D" uid="uid://ddhg112c1dv5c" path="res://assets/plants/inventory_items/fly_item.png" id="1_runvl"]
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="2_yo6u1"]
+
+[resource]
+script = ExtResource("2_yo6u1")
+name = "Fly"
+icon = ExtResource("1_runvl")
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"

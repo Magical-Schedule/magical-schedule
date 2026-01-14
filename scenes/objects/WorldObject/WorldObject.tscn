@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://fw4ncy43uda"]
+
+[ext_resource type="Script" uid="uid://cqtcxkeo1xwg2" path="res://scenes/objects/WorldObject/scripts/WorldObject.gd" id="1_emgmv"]
+[ext_resource type="Texture2D" uid="uid://0i5kblqu5rml" path="res://scenes/objects/WorldObject/assets/pot.png" id="2_7pjny"]
+[ext_resource type="FontFile" uid="uid://wxwlkt46ojsl" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_r6vbj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4efhx"]
+radius = 182.01099
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emgmv"]
+bg_color = Color(0.11070001, 0.155835, 0.27, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtrb0"]
+font = ExtResource("3_r6vbj")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_emgmv"]
+font_size = 23
+font_color = Color(0.81700003, 0.86, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emgmv"]
+size = Vector2(74, 80)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pjny"]
+bg_color = Color(0.10980392, 0.15686275, 0.27058825, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="WorldObject" type="Node2D"]
+script = ExtResource("1_emgmv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.0320001, 1.0320001)
+texture = ExtResource("2_7pjny")
+
+[node name="Proximity" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proximity"]
+shape = SubResource("CircleShape2D_4efhx")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -144.0
+offset_right = 96.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_emgmv")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/CenterContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Press"
+label_settings = SubResource("LabelSettings_rtrb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_emgmv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_emgmv")
+debug_color = Color(0.81270915, 0.35538295, 0.5395706, 0.41960785)
+
+[node name="UIWindow" type="CanvasLayer" parent="."]
+
+[node name="InteractionWindow" type="Control" parent="UIWindow"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="UIWindow/InteractionWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = 232.0
+offset_right = -264.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pjny")

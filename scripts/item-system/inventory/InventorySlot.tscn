@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://blmsp1xvwlccu"]
 
 [ext_resource type="Script" uid="uid://d0k5xhqa0ifd3" path="res://scripts/item-system/inventory/InventorySlot.gd" id="1_vov34"]
-[ext_resource type="Texture2D" uid="uid://tqo4ass88rb5" path="res://assets/UI and logos/Low res/SelectedSlot_low.png" id="2_screb"]
-[ext_resource type="Texture2D" uid="uid://dysfj86mebjl1" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
+[ext_resource type="Texture2D" uid="uid://oplqw0kyqwc2" path="res://assets/UI and logos/Low res/SelectedSlot_low.png" id="2_screb"]
+[ext_resource type="Texture2D" uid="uid://bihfor3sny88" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
 
 [node name="InventorySlot" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -18,9 +18,13 @@ script = ExtResource("1_vov34")
 metadata/_edit_use_anchors_ = true
 
 [node name="SelectionFrame" type="TextureRect" parent="."]
-visible = false
 layout_mode = 2
 texture = ExtResource("2_screb")
+
+[node name="SelectionFrame1" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.5294118)
