@@ -6,6 +6,14 @@ extends PanelContainer
 
 var slot_data: SlotData
 
+func play_move_sound():
+	var ui = get_tree().root.find_child("InventorySlot", true, false)
+	if ui:
+		var sfx = ui.get_node_or_null("Move_item_sfx")
+		if sfx:
+			sfx.pitch_scale = randf_range(1.1, 1.3)
+			sfx.play()
+			
 func set_slot_data(data: SlotData):
 	slot_data = data
 	if not slot_data.inventory_updated.is_connected(_update_ui):
@@ -43,6 +51,7 @@ func _quick_move():
 			if target.item_data == null: target.item_data = slot_data.item_data
 			target.quantity += slot_data.quantity
 			slot_data.quantity = 0
+			play_move_sound()
 			return
 			
 # --- DODANE FUNKCIJE ZA VIZUALNI FEEDBACK ---
