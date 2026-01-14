@@ -15,13 +15,32 @@ func _ready() -> void:
 		print("⚠️ InventoryUI not found in scene - will add to inventory later")
 
 func _physics_process(_delta:  float) -> void:
-	var direction: Vector2 = Vector2.ZERO
-	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	var direction1: Vector2 = Vector2.ZERO
+	direction1.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	direction1.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
-	direction = direction.normalized()
+	direction1 = direction1.normalized()
 
-	velocity = move_speed * direction
+	velocity = move_speed * direction1
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if direction != Vector2.ZERO:
+		velocity = direction * move_speed
+		
+		if abs(direction.x) > abs(direction.y):
+			animated_sprite.play("Walking")
+			animated_sprite.flip_h = direction.x < 0
+		else:
+			if direction.y > 0:
+				animated_sprite.play("walking-down")
+			else:
+				animated_sprite.play("walking-up")
+		if direction.y != 0 and direction.x == 0:
+			animated_sprite.flip_h = false
+	
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, move_speed)
+		animated_sprite.play("Idle")
 	move_and_slide()
 
 func _input(event):
