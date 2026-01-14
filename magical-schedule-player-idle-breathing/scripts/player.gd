@@ -36,4 +36,4 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.scale = base_scale
 
-	#move_and_slide()
+	move_and_slide()
