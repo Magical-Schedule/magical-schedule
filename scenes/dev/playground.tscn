@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cfbsheeidx0xo" path="res://assets/sounds/harvesting.wav" id="6_8dc3m"]
 [ext_resource type="PackedScene" uid="uid://blxtd8bp30nrq" path="res://scenes/Menu/PauseMenu.tscn" id="6_gyw54"]
 [ext_resource type="AudioStream" uid="uid://bo7jqm8lpo03" path="res://assets/sounds/watering.wav" id="7_8dc3m"]
+[ext_resource type="PackedScene" uid="uid://ciymi02qivawm" path="res://scenes/npc.tscn" id="8_wykfv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8u5f"]
 texture = ExtResource("2_2o04f")
@@ -2496,3 +2497,6 @@ pitch_scale = 0.5
 [node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
+
+[node name="NPC" parent="." instance=ExtResource("8_wykfv")]
+position = Vector2(-213, 13)
