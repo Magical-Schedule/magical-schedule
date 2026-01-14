@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://def5dbbgbaemi"]
+[gd_scene load_steps=13 format=4 uid="uid://def5dbbgbaemi"]
 
 [ext_resource type="PackedScene" uid="uid://dll4ynb800f47" path="res://scenes/player/player.tscn" id="1_7qj6t"]
 [ext_resource type="Script" uid="uid://dw0oua60dysbw" path="res://scripts/playground.gd" id="1_i3bnj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5wks4ytvjx4" path="res://scenes/field.tscn" id="4_2o04f"]
 [ext_resource type="PackedScene" uid="uid://dep2pqc0lkxnw" path="res://scripts/item-system/inventory/InventoryUI.tscn" id="5_ftahm"]
 [ext_resource type="PackedScene" uid="uid://blxtd8bp30nrq" path="res://scenes/Menu/PauseMenu.tscn" id="6_gyw54"]
+[ext_resource type="PackedScene" uid="uid://ciymi02qivawm" path="res://scenes/npc.tscn" id="8_wykfv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8u5f"]
 texture = ExtResource("2_2o04f")
@@ -2483,3 +2484,6 @@ position = Vector2(212, -86)
 [node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
+
+[node name="NPC" parent="." instance=ExtResource("8_wykfv")]
+position = Vector2(-213, 13)
