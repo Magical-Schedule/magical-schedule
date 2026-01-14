@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ciki83ekpb12f"]
+
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="1_g8ooq"]
+[ext_resource type="Texture2D" uid="uid://canugx5065jtj" path="res://assets/plants/inventory_items/grass_seed.png" id="1_wm8sh"]
+
+[resource]
+script = ExtResource("1_g8ooq")
+name = "grass_seed"
+icon = ExtResource("1_wm8sh")
+plantable = true
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"

@@ -6,3 +6,4 @@ class_name ItemData
 @export var icon: Texture2D
 @export var placable: bool
 @export var plantable: bool
+@export var price: int = 10

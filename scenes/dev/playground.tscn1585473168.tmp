@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://def5dbbgbaemi"]
+[gd_scene load_steps=15 format=4 uid="uid://def5dbbgbaemi"]
 
 [ext_resource type="PackedScene" uid="uid://dll4ynb800f47" path="res://scenes/player/player.tscn" id="1_7qj6t"]
 [ext_resource type="Script" uid="uid://dw0oua60dysbw" path="res://scripts/playground.gd" id="1_i3bnj"]
@@ -2455,8 +2455,6 @@ terrain_set_0/terrain_0/name = "TemplateTiling"
 terrain_set_0/terrain_0/color = Color(1, 0.75, 0.5, 1)
 sources/1 = SubResource("TileSetAtlasSource_is3ju")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rp7f"]
-
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_i3bnj")
 
@@ -2501,13 +2499,10 @@ pitch_scale = 0.5
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 1670.0
-offset_top = 18.0
-offset_right = 1893.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_1rp7f")
-horizontal_alignment = 1
+offset_left = 1710.0
+offset_top = 33.0
+offset_right = 1886.0
+offset_bottom = 97.0
 
 [node name="NPC" parent="." instance=ExtResource("8_wykfv")]
 position = Vector2(-213, 13)

@@ -4,6 +4,7 @@ extends PanelContainer
 @onready var quantity_label: Label = $Label
 @onready var selection_frame: Control = $SelectionFrame1
 
+
 var slot_data: SlotData
 
 func play_move_sound():
@@ -31,11 +32,21 @@ func _update_ui():
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		
 		_quick_move()
 
 func _quick_move():
 	if !slot_data.item_data: return
+	var npc  =  get_tree().root.find_child("npc", true, false)
+	if !npc: return
 	
+	if npc.current_state == npc.SELL:
+		npc.sell_item(slot_data.item_data, slot_data.quantity)
+		slot_data.item_data = null
+		slot_data.quantity = 0
+		play_move_sound()
+		return
+		
 	# Išče InventoryUi vozlišče v drevesu
 	var ui = get_tree().root.find_child("InventoryUi", true, false)
 	if !ui: return
@@ -74,3 +85,8 @@ func _on_mouse_exited() -> void:
 func set_highlight(is_active: bool):
 	if selection_frame:
 		selection_frame.visible = is_active
+
+func sell_item(item: ItemData, quantity:int):
+	var playground  =  get_tree().root.find_child("playground", true, false)
+	playground.money+=item.price*quantity
+	
