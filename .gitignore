@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+assets/textures/tilesets/pločnik_obe_verziji-SET.png
+assets/textures/tilesets/pločnik_obe_verziji-SET.png.import
