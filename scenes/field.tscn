@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt5wks4ytvjx4"]
+
+[ext_resource type="Script" uid="uid://bov276bajyb8l" path="res://scripts/field.gd" id="1_ttalb"]
+[ext_resource type="Texture2D" uid="uid://cjegb4y0wthgj" path="res://assets/plants/pots/dry_pot.png" id="2_lptdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttalb"]
+
+[node name="Field" type="Node2D"]
+script = ExtResource("1_ttalb")
+
+[node name="PotSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_lptdg")
+
+[node name="PlantSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ttalb")
