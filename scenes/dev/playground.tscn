@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dll4ynb800f47" path="res://scenes/player/player.tscn" id="1_7qj6t"]
 [ext_resource type="Script" path="res://scripts/playground.gd" id="1_i3bnj"]
-[ext_resource type="Texture2D" uid="uid://cj2ew5e8wpts1" path="res://assets/tilesets/tileset_pravi.png" id="3_1rp7f"]
-[ext_resource type="Texture2D" uid="uid://ct1difuaovo0q" path="res://assets/tilesets/template-tileset-scale-4.png" id="3_ftahm"]
+[ext_resource type="Texture2D" uid="uid://cj2ew5e8wpts1" path="res://assets/textures/tilesets/tileset_pravi.png" id="3_1rp7f"]
+[ext_resource type="Texture2D" uid="uid://ct1difuaovo0q" path="res://assets/textures/tilesets/template-tileset-scale-4.png" id="3_ftahm"]
 [ext_resource type="PackedScene" uid="uid://dt5wks4ytvjx4" path="res://scenes/field.tscn" id="4_2o04f"]
 [ext_resource type="PackedScene" uid="uid://dep2pqc0lkxnw" path="res://scripts/item-system/inventory/InventoryUI.tscn" id="5_ftahm"]
 [ext_resource type="AudioStream" uid="uid://cfbsheeidx0xo" path="res://assets/sounds/harvesting.wav" id="6_8dc3m"]
@@ -437,7 +437,6 @@ volume_db = 1.742
 pitch_scale = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
 
