@@ -441,7 +441,7 @@ pitch_scale = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
+[node name="InventoryUi" parent="CanvasLayer" groups=["inventory_group"] instance=ExtResource("5_ftahm")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
 metadata/_edit_lock_ = true
@@ -463,7 +463,7 @@ offset_bottom = -521.0
 
 [node name="NPC" parent="." instance=ExtResource("8_wykfv")]
 position = Vector2(1328, -615)
-disable_mode = 2
+disable_mode = 1
 
 [node name="collision_shape_npc" type="CollisionShape2D" parent="NPC"]
 position = Vector2(-5, 51)

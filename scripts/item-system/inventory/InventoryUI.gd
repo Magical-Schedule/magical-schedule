@@ -69,6 +69,7 @@ func add_item(item: ItemData, count: int = 1):
 		if slot.item_data == null:
 			slot.item_data = item
 			slot.quantity = count
+			populate_grids()
 			return true # Uspešno dodano
 	
 	return false
