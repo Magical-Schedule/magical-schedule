@@ -437,7 +437,6 @@ volume_db = 1.742
 pitch_scale = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="InventoryUi" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
 
