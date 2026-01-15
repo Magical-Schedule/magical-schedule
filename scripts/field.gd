@@ -4,8 +4,8 @@ class_name Field
 # --- States & Constants ---
 enum FieldState { EMPTY, GROWING, READY }
 
-const DRY_POT = "res://assets/plants/pots/dry_pot.png"
-const WET_POT = "res://assets/plants/pots/wet_pot.png"
+const DRY_POT = "res://assets/textures/plants/pots/dry_pot.png"
+const WET_POT = "res://assets/textures/plants/pots/wet_pot.png"
 const MOISTURE_DECAY := 0.02
 
 # --- Node References ---
@@ -99,7 +99,7 @@ func execute_harvest():
 	var yield_amount := int((crop.base_yield + randi() % 3) * soil_quality)
 	
 	# Inventory Logic
-	var inv_ui = get_tree().root.find_child("InventoryUi", true, false)
+	var inv_ui = get_tree().root.find_child("InventoryUI", true, false)
 	if inv_ui:
 		var item_path = "res://scripts/items/Define/" + crop.harvest_item_name + ".tres"
 		if ResourceLoader.exists(item_path):
@@ -125,7 +125,7 @@ func update_environment(delta: float):
 
 func update_plant_sprite():
 	if not crop: return
-	plant_sprite.texture = load("res://assets/plants/growing_animations/growing_animations.png")
+	plant_sprite.texture = load("res://assets/textures/plants/growing_animations/growing_animations.png")
 	plant_sprite.hframes = 4 
 	plant_sprite.vframes = 4 
 	

@@ -54,7 +54,6 @@ func choose(array):
 func move(delta):
 	if !is_chatting:
 		position += direction * speed * delta
-				
 
 
 
