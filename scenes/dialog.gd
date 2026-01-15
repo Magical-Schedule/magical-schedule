@@ -41,7 +41,8 @@ func next_script():
 		d_active = false
 		$dialog.visible = false
 		$selling_interest.visible = true
-		#emit_signal("dialogue_finished")
+		print("END")
+	
 		return
 		
 	$dialog/Name.text = dialogue[current_dialouge_id]['name']
@@ -52,6 +53,7 @@ func next_script():
 
 func _on_yes_button_pressed() -> void:
 	$Selling_interest.visable = false
+	print("deluje")
 	emit_signal("selling_started")
 	
 	

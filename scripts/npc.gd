@@ -82,5 +82,7 @@ func _on_timer_timeout() -> void:
 func _on_dialog_dialogue_finished() -> void:
 	is_chatting = false
 	is_roaming = true
+	
 func _on_dialog_selling_started() -> void:
 	current_state = SELL
+	print("deluje NPCa")
