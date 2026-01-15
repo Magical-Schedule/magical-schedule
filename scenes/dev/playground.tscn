@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://def5dbbgbaemi"]
+[gd_scene load_steps=17 format=4 uid="uid://def5dbbgbaemi"]
 
 [ext_resource type="PackedScene" uid="uid://dll4ynb800f47" path="res://scenes/player/player.tscn" id="1_7qj6t"]
 [ext_resource type="Script" uid="uid://dw0oua60dysbw" path="res://scripts/playground.gd" id="1_i3bnj"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bo7jqm8lpo03" path="res://assets/sounds/watering.wav" id="7_8dc3m"]
 [ext_resource type="PackedScene" uid="uid://ciymi02qivawm" path="res://scenes/npc.tscn" id="8_wykfv"]
 [ext_resource type="PackedScene" uid="uid://bt424475i1tt2" path="res://scripts/item-system/inventory/buyInventory.tscn" id="10_lbj16"]
-[ext_resource type="Script" uid="uid://bb8cfv8gnselw" path="res://scripts/item-system/inventory/buyInventory.gd" id="11_10xwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8u5f"]
 texture = ExtResource("2_2o04f")
@@ -2512,11 +2511,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1rp7f")
 horizontal_alignment = 1
 
 [node name="BuyInventory" parent="CanvasLayer" instance=ExtResource("10_lbj16")]
-offset_left = 738.0
-offset_top = 393.0
-offset_right = -742.0
-offset_bottom = -577.0
-script = ExtResource("11_10xwv")
+offset_left = 733.0
+offset_top = 449.0
+offset_right = -747.0
+offset_bottom = -521.0
 
 [node name="NPC" parent="." instance=ExtResource("8_wykfv")]
 position = Vector2(-213, 13)

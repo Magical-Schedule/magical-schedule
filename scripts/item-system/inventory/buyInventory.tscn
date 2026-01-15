@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt424475i1tt2"]
+[gd_scene load_steps=6 format=3 uid="uid://bt424475i1tt2"]
 
+[ext_resource type="Script" uid="uid://bb8cfv8gnselw" path="res://scripts/item-system/inventory/buyInventory.gd" id="1_anrj0"]
 [ext_resource type="Texture2D" uid="uid://b708vfeggpio2" path="res://assets/plants/inventory_items/flytrap_seed.png" id="1_gqhql"]
 [ext_resource type="Texture2D" uid="uid://cwilcrnv7obmq" path="res://assets/plants/inventory_items/mushroom_seed.png" id="2_anrj0"]
 [ext_resource type="Texture2D" uid="uid://canugx5065jtj" path="res://assets/plants/inventory_items/grass_seed.png" id="3_sydtr"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+script = ExtResource("1_anrj0")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
