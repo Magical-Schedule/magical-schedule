@@ -1,12 +1,17 @@
 extends Control
 
 signal dialogue_finished
+<<<<<<< HEAD
 signal selling_started
+=======
+
+>>>>>>> player-idle-breathing
 @export_file("*.json") var d_file
 
 var dialogue = []
 var current_dialouge_id = 0
 var d_active = false
+<<<<<<< HEAD
 var button_pressed = false
 
 func _ready():
@@ -14,12 +19,21 @@ func _ready():
 	$NO.visible = false
 	$Yes.visible = false
 	$selling_interest.visible = false
+=======
+
+func _ready():
+	$NinePatchRect.visible = false
+>>>>>>> player-idle-breathing
 	
 func start():
 	if d_active:
 		return
 	d_active = true
+<<<<<<< HEAD
 	$dialog.visible = true
+=======
+	$NinePatchRect.visible = true
+>>>>>>> player-idle-breathing
 	dialogue = load_dialouge()
 	current_dialouge_id = -1
 	next_script()
@@ -39,6 +53,7 @@ func next_script():
 	current_dialouge_id += 1
 	if current_dialouge_id >= len(dialogue):
 		d_active = false
+<<<<<<< HEAD
 		$dialog.visible = false
 		var iu =  get_tree().root.find_child("InventoryUi", true, false)
 		iu.toggle_sell()
@@ -62,3 +77,13 @@ func _on_no_button_pressed() -> void:
 	$Selling_interest.visible = false
 	emit_signal("sell_menue_closed")
 	
+=======
+		$NinePatchRect.visible = false
+		emit_signal("dialogue_finished")
+		return
+		
+	$NinePatchRect/Name.text = dialogue[current_dialouge_id]['name']
+	$NinePatchRect/text.text = dialogue[current_dialouge_id]['text']
+		
+		
+>>>>>>> player-idle-breathing

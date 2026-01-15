@@ -9,12 +9,16 @@ var start_pos
 var is_roaming = true
 var is_chatting = false
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> player-idle-breathing
 var player
 var player_is_in_chat_zone = false
 enum{
 	IDLE,
 	NEW_DIR,
+<<<<<<< HEAD
 	MOVE,
 	SELL
 }
@@ -25,6 +29,15 @@ func _ready():
 	start_pos = position
 func _process(delta):
 	
+=======
+	MOVE
+}
+
+func _ready():
+	randomize()
+	start_pos = position
+func _process(delta):
+>>>>>>> player-idle-breathing
 	if current_state == 0 or current_state == 1:
 		$AnimatedSprite2D.play("idle")
 	elif current_state == 2 and !is_chatting:
@@ -39,7 +52,11 @@ func _process(delta):
 	if is_roaming:
 		match current_state:
 			IDLE:
+<<<<<<< HEAD
 				velocity = Vector2.ZERO 
+=======
+				pass
+>>>>>>> player-idle-breathing
 			NEW_DIR:
 				direction = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN])
 			MOVE:
@@ -57,20 +74,30 @@ func choose(array):
 	
 func move(delta):
 	if !is_chatting:
+<<<<<<< HEAD
 		velocity = direction * speed
 		move_and_slide()
+=======
+		position += direction * speed * delta
+>>>>>>> player-idle-breathing
 				
 
 
 
 func _on_chat_colliosion_body_entered(body: Node2D) -> void:
+<<<<<<< HEAD
 	$SELL.visible = true
+=======
+>>>>>>> player-idle-breathing
 	if body.has_method("player"):
 		player = body
 		player_is_in_chat_zone = true
 
 func _on_chat_colliosion_body_exited(body: Node2D) -> void:
+<<<<<<< HEAD
 	$SELL.visible = false
+=======
+>>>>>>> player-idle-breathing
 	if body.has_method("player"):
 		player_is_in_chat_zone = false
 
@@ -83,7 +110,10 @@ func _on_timer_timeout() -> void:
 func _on_dialog_dialogue_finished() -> void:
 	is_chatting = false
 	is_roaming = true
+<<<<<<< HEAD
 	
 func _on_dialog_selling_started() -> void:
 	current_state = SELL
 	print("deluje NPCa")
+=======
+>>>>>>> player-idle-breathing

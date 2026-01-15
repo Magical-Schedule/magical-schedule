@@ -7,7 +7,11 @@ extends Control
 @onready var inv_panel = $Panel
 @onready var hotbar_panel = $Panel2
 
+<<<<<<< HEAD
 var sell = false
+=======
+
+>>>>>>> player-idle-breathing
 var inventory_data: InventoryData
 
 
@@ -38,7 +42,10 @@ func populate_grids():
 #inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
+<<<<<<< HEAD
 		sell = false
+=======
+>>>>>>> player-idle-breathing
 		inv_panel.visible = !inv_panel.visible 
 		
 		if inv_panel.visible:
@@ -69,7 +76,10 @@ func add_item(item: ItemData, count: int = 1):
 		if slot.item_data == null:
 			slot.item_data = item
 			slot.quantity = count
+<<<<<<< HEAD
 			populate_grids()
+=======
+>>>>>>> player-idle-breathing
 			return true # Uspešno dodano
 	
 	return false
@@ -94,6 +104,7 @@ func check_item():
 func get_item_from_active():
 	if inventory_data.slots[54+inventory_data.active_slot_index].item_data != null:
 		inventory_data.slots[54+inventory_data.active_slot_index].quantity-=1
+<<<<<<< HEAD
 		
 func set_visible_iu():
 	var ui = get_tree().root.find_child("InventorySlot", true, false)
@@ -110,3 +121,5 @@ func toggle_sell():
 		sell=false
 	else:
 		sell = true
+=======
+>>>>>>> player-idle-breathing
