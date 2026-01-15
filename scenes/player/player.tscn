@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c3tjchl45y4pr" path="res://assets/Main-Character/Walk-right_walk-left-animation/MainCharachter-movementV2.png" id="3_lvxji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rupst"]
-size = Vector2(29.999998, 84.545456)
+size = Vector2(29.999998, 44.545456)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("2_gmlin")
@@ -190,7 +190,7 @@ script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
-position = Vector2(0.50000024, 26.499998)
+position = Vector2(0.50000024, 48.5)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_rupst")
 debug_color = Color(7.2196127e-07, 0.6071444, 0.18817249, 0.41960785)
