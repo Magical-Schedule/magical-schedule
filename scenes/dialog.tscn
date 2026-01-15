@@ -10,7 +10,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_36pgd")
 
+<<<<<<< HEAD
 [node name="dialog" type="NinePatchRect" parent="."]
+=======
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+>>>>>>> player-idle-breathing
 texture_filter = 1
 layout_mode = 0
 offset_left = -30.0
@@ -23,7 +27,11 @@ patch_margin_top = 10
 patch_margin_right = 3
 patch_margin_bottom = 10
 
+<<<<<<< HEAD
 [node name="Name" type="RichTextLabel" parent="dialog"]
+=======
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+>>>>>>> player-idle-breathing
 layout_mode = 0
 offset_left = 3.9999998
 offset_top = 2.9999998
@@ -32,13 +40,18 @@ offset_bottom = 23.0
 scale = Vector2(2, 2)
 text = "Name:"
 
+<<<<<<< HEAD
 [node name="text" type="RichTextLabel" parent="dialog"]
+=======
+[node name="text" type="RichTextLabel" parent="NinePatchRect"]
+>>>>>>> player-idle-breathing
 layout_mode = 0
 offset_left = 17.0
 offset_top = 47.0
 offset_right = 380.3333
 offset_bottom = 207.0
 text = "chatting..."
+<<<<<<< HEAD
 
 [node name="selling_interest" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -145,3 +158,5 @@ text = "chatting..."
 
 [connection signal="pressed" from="selling_interest/yesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="selling_interest/noButton" to="." method="_on_no_button_pressed"]
+=======
+>>>>>>> player-idle-breathing

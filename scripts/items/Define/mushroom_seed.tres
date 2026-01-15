@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dku403rj7p3yh"]
 
 [ext_resource type="Texture2D" uid="uid://bv5uqss6sqnm6" path="res://assets/plants/growing_animations/growing_animation_shroom.png" id="1_d77le"]
+=======
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dku403rj7p3yh"]
+
+>>>>>>> player-idle-breathing
 [ext_resource type="Texture2D" uid="uid://cwilcrnv7obmq" path="res://assets/plants/inventory_items/mushroom_seed.png" id="1_yopi6"]
 [ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="2_d77le"]
 
@@ -9,5 +14,8 @@ script = ExtResource("2_d77le")
 name = "mushroom_seed"
 icon = ExtResource("1_yopi6")
 plantable = true
+<<<<<<< HEAD
 is_seed = true
 growth_spritesheet = ExtResource("1_d77le")
+=======
+>>>>>>> player-idle-breathing

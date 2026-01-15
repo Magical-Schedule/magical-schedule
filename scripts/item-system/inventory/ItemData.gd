@@ -6,7 +6,10 @@ class_name ItemData
 @export var icon: Texture2D
 @export var placable: bool
 @export var plantable: bool
+<<<<<<< HEAD
 @export var price: int = 10
 @export var is_seed: bool = false
 @export var crop_row_index: int = 0
 @export var growth_spritesheet: Texture2D
+=======
+>>>>>>> player-idle-breathing
