@@ -488,3 +488,14 @@ disable_mode = 2
 [node name="collision_shape_npc" type="CollisionShape2D" parent="NPC"]
 position = Vector2(-5, 51)
 shape = SubResource("CircleShape2D_g8fdx")
+
+[node name="Field2" parent="." instance=ExtResource("4_2o04f")]
+position = Vector2(141, -200)
+
+[node name="Harvest_sfx" type="AudioStreamPlayer" parent="Field2"]
+stream = ExtResource("6_8dc3m")
+
+[node name="Plant_sfx" type="AudioStreamPlayer" parent="Field2"]
+stream = ExtResource("7_8dc3m")
+volume_db = 1.742
+pitch_scale = 0.5
