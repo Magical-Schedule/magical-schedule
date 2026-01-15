@@ -8,6 +8,8 @@ const WET_POT = "res://assets/plants/pots/wet_pot.png"
 
 const MOISTURE_DECAY := 0.02
 
+# Vizualni parametri stresa
+const STRESS_COLOR_MIN := 0.5 
 
 @onready var pot_sprite: Sprite2D = $PotSprite
 @onready var plant_sprite: Sprite2D = $PlantSprite
@@ -48,11 +50,27 @@ func _process(delta):
 	if state == FieldState.GROWING and crop:
 		update_environment(delta)
 		
-		if crop.grow(delta, moisture, light):  # Vrne true če se je stage spremenil
+		if crop.grow(delta, moisture, light):
 			update_plant_sprite()
-			if crop.is_mature():
-				state = FieldState.READY
-				print("✅ Crop is ready for harvest!")
+		
+		# posodobi vizualni stres vsako posodobitev
+		update_stress_visual()
+		
+		if crop.is_mature():
+			state = FieldState.READY
+			print("✅ Crop is ready for harvest!")
+
+# Vizualni prikaz stresa rastline
+func update_stress_visual():
+	if not crop:
+		return
+	
+	# crop.stress je med 0 in 1
+	var stress_value := clamp(crop.stress, 0.0, 1.0)
+	var color_factor := lerp(1.0, STRESS_COLOR_MIN, stress_value)
+	
+	# bolj ko je rastlina pod stresom, bolj je bleda
+	plant_sprite.modulate = Color(1.0, color_factor, color_factor)
 
 # Posodabljanje okolja
 func update_environment(delta: float):
