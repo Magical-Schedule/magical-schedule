@@ -10,7 +10,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_36pgd")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="dialog" type="NinePatchRect" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = -30.0
@@ -23,7 +23,7 @@ patch_margin_top = 10
 patch_margin_right = 3
 patch_margin_bottom = 10
 
-[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+[node name="Name" type="RichTextLabel" parent="dialog"]
 layout_mode = 0
 offset_left = 3.9999998
 offset_top = 2.9999998
@@ -32,10 +32,116 @@ offset_bottom = 23.0
 scale = Vector2(2, 2)
 text = "Name:"
 
-[node name="text" type="RichTextLabel" parent="NinePatchRect"]
+[node name="text" type="RichTextLabel" parent="dialog"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 47.0
 offset_right = 380.3333
 offset_bottom = 207.0
 text = "chatting..."
+
+[node name="selling_interest" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -28.0
+offset_top = -333.0
+offset_right = 405.0
+offset_bottom = -71.0
+texture = ExtResource("1_pkx4w")
+patch_margin_left = 3
+patch_margin_top = 10
+patch_margin_right = 3
+patch_margin_bottom = 10
+
+[node name="yesButton" type="Button" parent="selling_interest"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 88.0
+offset_right = 144.0
+offset_bottom = 133.5
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.25566882, 0.7605509, 7.70092e-07, 1)
+text = "YES
+"
+
+[node name="noButton" type="Button" parent="selling_interest"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 88.0
+offset_right = 279.0
+offset_bottom = 133.5
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.7118461, 0, 0.047181398, 1)
+text = "NO"
+
+[node name="Name" type="RichTextLabel" parent="selling_interest"]
+layout_mode = 0
+offset_left = 3.9999998
+offset_top = 2.9999998
+offset_right = 74.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "You:"
+
+[node name="NO" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -27.0
+offset_top = -331.0
+offset_right = 406.0
+offset_bottom = -69.0
+texture = ExtResource("1_pkx4w")
+patch_margin_left = 3
+patch_margin_top = 10
+patch_margin_right = 3
+patch_margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="NO"]
+layout_mode = 0
+offset_left = 3.9999998
+offset_top = 2.9999998
+offset_right = 74.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "Ricardo:"
+
+[node name="text" type="RichTextLabel" parent="NO"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 47.0
+offset_right = 380.3333
+offset_bottom = 207.0
+text = "chatting..."
+
+[node name="Yes" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -27.0
+offset_top = -332.0
+offset_right = 406.0
+offset_bottom = -70.0
+texture = ExtResource("1_pkx4w")
+patch_margin_left = 3
+patch_margin_top = 10
+patch_margin_right = 3
+patch_margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="Yes"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 82.0
+offset_bottom = 30.0
+scale = Vector2(2, 2)
+text = "Ricardo:"
+
+[node name="text" type="RichTextLabel" parent="Yes"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 63.0
+offset_right = 375.3333
+offset_bottom = 223.0
+text = "chatting..."
+
+[connection signal="pressed" from="selling_interest/yesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="selling_interest/noButton" to="." method="_on_no_button_pressed"]

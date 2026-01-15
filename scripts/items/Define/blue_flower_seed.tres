@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b8jyci1jkm3gw"]
+
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="1_pd4n4"]
+[ext_resource type="Texture2D" uid="uid://d3bb8xsbq4f24" path="res://assets/plants/inventory_items/flower_seed.png" id="1_t18qf"]
+
+[resource]
+script = ExtResource("1_pd4n4")
+icon = ExtResource("1_t18qf")
+plantable = true
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"

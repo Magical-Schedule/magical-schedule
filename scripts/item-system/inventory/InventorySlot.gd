@@ -31,11 +31,21 @@ func _update_ui():
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		
 		_quick_move()
+
+
 
 func _quick_move():
 	if !slot_data.item_data: return
-	
+	var iu =  get_tree().root.find_child("InventoryUi", true, false)
+	if iu.sell:
+		sell_item(slot_data.item_data, slot_data.quantity)
+		slot_data.item_data = null
+		slot_data.quantity = 0
+		play_move_sound()
+		return
+		
 	# Išče InventoryUi vozlišče v drevesu
 	var ui = get_tree().root.find_child("InventoryUi", true, false)
 	if !ui: return
@@ -74,3 +84,8 @@ func _on_mouse_exited() -> void:
 func set_highlight(is_active: bool):
 	if selection_frame:
 		selection_frame.visible = is_active
+
+func sell_item(item: ItemData, quantity:int):
+	var playground  =  get_tree().root.find_child("Playground", true, false)
+	playground.sub_money(-item.price*quantity)
+	

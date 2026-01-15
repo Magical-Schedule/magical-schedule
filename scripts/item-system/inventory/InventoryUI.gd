@@ -7,7 +7,7 @@ extends Control
 @onready var inv_panel = $Panel
 @onready var hotbar_panel = $Panel2
 
-
+var sell = false
 var inventory_data: InventoryData
 
 
@@ -38,6 +38,7 @@ func populate_grids():
 #inventory toggle z E
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
+		sell = false
 		inv_panel.visible = !inv_panel.visible 
 		
 		if inv_panel.visible:
@@ -92,3 +93,19 @@ func check_item():
 func get_item_from_active():
 	if inventory_data.slots[54+inventory_data.active_slot_index].item_data != null:
 		inventory_data.slots[54+inventory_data.active_slot_index].quantity-=1
+		
+func set_visible_iu():
+	var ui = get_tree().root.find_child("InventorySlot", true, false)
+	inv_panel.visible = !inv_panel.visible 
+	
+	if inv_panel.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		inventory_data.save_inventory()
+
+func toggle_sell():
+	if sell:
+		sell=false
+	else:
+		sell = true
