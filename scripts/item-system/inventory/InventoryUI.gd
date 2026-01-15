@@ -1,11 +1,13 @@
 extends Control
 
 @export var slot_scene: PackedScene
-@onready var hotbar_panel = $HotbarPanel
-@onready var hotbar_grid = $HotbarPanel/VBoxContainer/HotbarGrid
-@onready var inv_panel = $InventoryPanel
-@onready var inv_grid = $InventoryPanel/VBoxContainer/InventoryGrid
+@onready var inv_grid = $Panel/VBoxContainer/InventoryGrid
+@onready var hotbar_grid = $Panel2/VBoxContainer/HotbarGrid
 
+@onready var inv_panel = $Panel
+@onready var hotbar_panel = $Panel2
+
+var sell = false
 var inventory_data: InventoryData
 var focus_in_backpack: bool = true
 var focused_index: int = 0
@@ -118,6 +120,7 @@ func _navigate_grid(direction: Vector2i):
 func _input(event):
 	# Mouse Mode
 	if event.is_action_pressed("inventory_toggle"): 
+		sell = false
 		inv_panel.visible = !inv_panel.visible 
 		
 		if inv_panel.visible:
@@ -186,5 +189,25 @@ func _ready():
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
 	
-	add_item(load("res://data/items/seeds/seed_mushroom.tres"))
-	populate_grids()
+func check_item():
+	return inventory_data.slots[54+inventory_data.active_slot_index].item_data
+	
+func get_item_from_active():
+	if inventory_data.slots[54+inventory_data.active_slot_index].item_data != null:
+		inventory_data.slots[54+inventory_data.active_slot_index].quantity-=1
+		
+func set_visible_iu():
+	var ui = get_tree().root.find_child("InventorySlot", true, false)
+	inv_panel.visible = !inv_panel.visible 
+	
+	if inv_panel.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		inventory_data.save_inventory()
+
+func toggle_sell():
+	if sell:
+		sell=false
+	else:
+		sell = true

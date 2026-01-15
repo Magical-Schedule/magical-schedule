@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://ciymi02qivawm"]
+[gd_scene load_steps=37 format=3 uid="uid://ciymi02qivawm"]
 
 [ext_resource type="Script" uid="uid://coah03nbxt0ax" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://dm5qq0rjqrcuf" path="res://assets/Ricardo_npc/Ricardo_NPC.png" id="1_nh2m4"]
 [ext_resource type="PackedScene" uid="uid://dn35gc7nnyvg4" path="res://scenes/dialog.tscn" id="3_rv78h"]
+[ext_resource type="Texture2D" uid="uid://ipnl7k1rqp47" path="res://assets/ChatBackground/chat_background.png" id="4_7n8xq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_abqhh"]
 load_path = "res://.godot/imported/Ricardo_NPC.png-c0e21dcb7d556e8b29cf624ba4c1a12d.ctex"
@@ -266,6 +267,27 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chat_colliosion"]
 position = Vector2(-4, -5)
 shape = SubResource("CircleShape2D_nh2m4")
+
+[node name="SELL" type="NinePatchRect" parent="."]
+texture_filter = 1
+offset_left = -77.0
+offset_top = -134.0
+offset_right = 79.0
+offset_bottom = -88.0
+texture = ExtResource("4_7n8xq")
+patch_margin_left = 3
+patch_margin_top = 10
+patch_margin_right = 3
+patch_margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="SELL"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -2.0000002
+offset_right = 112.0
+offset_bottom = 18.0
+scale = Vector2(2, 2)
+text = "SELL"
 
 [connection signal="dialogue_finished" from="Dialog" to="." method="_on_dialog_dialogue_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

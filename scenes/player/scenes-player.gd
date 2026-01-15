@@ -8,6 +8,7 @@ var nearby_field: Field = null
 @onready var inventory_ui: Control = null
 @onready var animated_sprite = $AnimatedSprite2D
 
+
 @onready var steps_sfx: AudioStreamPlayer = $Walk_sfx
 
 var step_sounds = [
@@ -22,6 +23,7 @@ func _ready() -> void:
 	inventory_ui = get_tree().get_first_node_in_group("inventory_ui")
 	if not inventory_ui:
 		print("⚠️ InventoryUI not found in scene - will add to inventory later")
+	
 
 func play_random_step():
 	if steps_sfx == null or step_sounds.is_empty():

@@ -1,21 +1,25 @@
 extends Control
 
 signal dialogue_finished
-
+signal selling_started
 @export_file("*.json") var d_file
 
 var dialogue = []
 var current_dialouge_id = 0
 var d_active = false
+var button_pressed = false
 
 func _ready():
-	$NinePatchRect.visible = false
+	$dialog.visible = false
+	$NO.visible = false
+	$Yes.visible = false
+	$selling_interest.visible = false
 	
 func start():
 	if d_active:
 		return
 	d_active = true
-	$NinePatchRect.visible = true
+	$dialog.visible = true
 	dialogue = load_dialouge()
 	current_dialouge_id = -1
 	next_script()
@@ -35,11 +39,26 @@ func next_script():
 	current_dialouge_id += 1
 	if current_dialouge_id >= len(dialogue):
 		d_active = false
-		$NinePatchRect.visible = false
-		emit_signal("dialogue_finished")
+		$dialog.visible = false
+		var iu =  get_tree().root.find_child("InventoryUi", true, false)
+		iu.toggle_sell()
+		iu.set_visible_iu()
 		return
 		
-	$NinePatchRect/Name.text = dialogue[current_dialouge_id]['name']
-	$NinePatchRect/text.text = dialogue[current_dialouge_id]['text']
+	$dialog/Name.text = dialogue[current_dialouge_id]['name']
+	$dialog/text.text = dialogue[current_dialouge_id]['text']
 		
 		
+
+
+func _on_yes_button_pressed() -> void:
+	$Selling_interest.visable = false
+	print("deluje")
+	emit_signal("selling_started")
+	
+	
+
+func _on_no_button_pressed() -> void:
+	$Selling_interest.visible = false
+	emit_signal("sell_menue_closed")
+	
