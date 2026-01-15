@@ -3,7 +3,6 @@ extends PanelContainer
 @onready var Icon: TextureRect = get_node("IconWrapper/TextureRect")
 @onready var quantity_label: Label = $Label
 @onready var selection_frame: Control = $SelectionFrame1
-var sell = true
 
 var slot_data: SlotData
 
@@ -35,16 +34,12 @@ func _gui_input(event):
 		
 		_quick_move()
 
-func toggle_sell():
-	if sell:
-		sell=false
-	else:
-		sell = true
+
 
 func _quick_move():
 	if !slot_data.item_data: return
-	
-	if sell:
+	var iu =  get_tree().root.find_child("InventoryUi", true, false)
+	if iu.sell:
 		sell_item(slot_data.item_data, slot_data.quantity)
 		slot_data.item_data = null
 		slot_data.quantity = 0

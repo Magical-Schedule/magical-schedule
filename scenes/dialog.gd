@@ -40,9 +40,9 @@ func next_script():
 	if current_dialouge_id >= len(dialogue):
 		d_active = false
 		$dialog.visible = false
-		$selling_interest.visible = true
-		print("END")
-	
+		var iu =  get_tree().root.find_child("InventoryUi", true, false)
+		iu.toggle_sell()
+		iu.set_visible_iu()
 		return
 		
 	$dialog/Name.text = dialogue[current_dialouge_id]['name']
