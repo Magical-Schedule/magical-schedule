@@ -49,13 +49,20 @@ func _quick_move():
 	for target_slot in target_array:
 		# 1. Try to stack first if item is stackable 
 		if target_slot.item_data and target_slot.item_data.resource_path == slot_data.item_data.resource_path:
-			# Transfer quantities/uses logic here... [cite: 2, 9]
-			pass
+			var target_q = target_slot.item_data.quantity_data
+			var source_q = slot_data.item_data.quantity_data
+			
+			if target_q and source_q and target_q.current_stack < target_q.max_stack:
+				target_q.current_stack += source_q.current_stack
+				slot_data.item_data = null # Clear the old slot
+				play_move_sound()
+				return
 		
 		# 2. Or find an empty slot
 		if target_slot.item_data == null:
 			target_slot.item_data = slot_data.item_data
 			slot_data.item_data = null
+			play_move_sound()
 			return
 
 ## GUI Input Method
@@ -85,14 +92,6 @@ func set_highlight(is_focused: bool, active_alpha: float, inactive_alpha: float)
 		
 	# If the icon should also dim when not focused:
 	icon.modulate.a = active_alpha if is_focused else inactive_alpha
-	for i in target_range:
-		var target = inv_data.slots[i]
-		if target.item_data == null or (target.item_data == slot_data.item_data and target.item_data.stackable):
-			if target.item_data == null: target.item_data = slot_data.item_data
-			target.quantity += slot_data.quantity
-			slot_data.quantity = 0
-			play_move_sound()
-			return
 			
 # --- DODANE FUNKCIJE ZA VIZUALNI FEEDBACK ---
 func _ready():

@@ -3,8 +3,8 @@ class_name Field
 
 enum FieldState { EMPTY, WET, GROWING, READY }
 
-const DRY_POT = "res://assets/plants/pots/dry_pot.png"
-const WET_POT = "res://assets/plants/pots/wet_pot.png"
+const DRY_POT = "res://assets/textures/plants/pots/dry_pot.png"
+const WET_POT = "res://assets/textures/plants/pots/wet_pot.png"
 
 const MOISTURE_DECAY := 0.02
 
@@ -97,7 +97,7 @@ func update_plant_sprite():
 	if not crop:
 		return
 	
-	plant_sprite.texture = load("res://assets/plants/growing_animations/growing_animations.png")
+	plant_sprite.texture = load("res://assets/textures/plants/growing_animations/growing_animations.png")
 	
 	plant_sprite.hframes = 4 
 	plant_sprite.vframes = 4 
