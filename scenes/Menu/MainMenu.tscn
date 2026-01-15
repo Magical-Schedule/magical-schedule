@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkb4hj4mrg7vh"]
+
+[ext_resource type="Texture2D" uid="uid://cihvj87p0v87h" path="res://assets/UI and logos/High res/MenuBackground.png" id="1_l61h4"]
+[ext_resource type="Script" uid="uid://by554hp572yci" path="res://scripts/Menu/main_menu.gd" id="1_whdkd"]
+[ext_resource type="Texture2D" uid="uid://ct1ofus1ipvdv" path="res://assets/UI and logos/High res/Icon.png" id="3_4fyr5"]
+[ext_resource type="Texture2D" uid="uid://f8irr1bl62s8" path="res://assets/UI and logos/High res/logo.png" id="3_whdkd"]
+[ext_resource type="Theme" uid="uid://y0dbpcg64xsj" path="res://assets/fonts and themes/MenuTheme.tres" id="4_0n5pj"]
+[ext_resource type="Script" uid="uid://cr7x1s3hojh27" path="res://scripts/Menu/main_menu_buttons.gd" id="5_0n5pj"]
+[ext_resource type="Script" uid="uid://0ipu877yy7el" path="res://scripts/Menu/panel.gd" id="6_4ms1j"]
+[ext_resource type="AudioStream" uid="uid://benxi18pbls54" path="res://assets/sounds/pick_up_1.wav" id="8_i0awj"]
+
+[sub_resource type="Gradient" id="Gradient_0n5pj"]
+offsets = PackedFloat32Array(0, 0.26415095, 0.5254237, 0.7830189, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.5019608, 0.5019608, 0.5019608, 1, 1, 1, 1, 1, 0.89411765, 0.89411765, 0.89411765, 1, 0.49019608, 0.49019608, 0.49019608, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i0awj"]
+gradient = SubResource("Gradient_0n5pj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0n5pj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_i0awj")
+turbulence_noise_strength = 7.5
+turbulence_noise_scale = 80.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ms1j"]
+texture = ExtResource("3_whdkd")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_0n5pj")
+script = ExtResource("1_whdkd")
+
+[node name="FadedBg" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l61h4")
+region_rect = Rect2(0, 0, 1920, 1080)
+patch_margin_left = 960
+patch_margin_top = 540
+patch_margin_right = 960
+patch_margin_bottom = 540
+
+[node name="IconBg" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_4fyr5")
+region_rect = Rect2(0, 0, 1920, 1080)
+patch_margin_left = 960
+patch_margin_top = 540
+patch_margin_right = 960
+patch_margin_bottom = 540
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(960, 540)
+amount = 40
+lifetime = 8.0
+process_material = SubResource("ParticleProcessMaterial_0n5pj")
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 602.0
+offset_right = 1711.0
+offset_bottom = 898.0
+theme = ExtResource("4_0n5pj")
+script = ExtResource("5_0n5pj")
+
+[node name="Play" type="Button" parent="MainMenuButtons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainMenuButtons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainMenuButtons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 966.0
+offset_top = 111.0
+offset_right = 1790.0
+offset_bottom = 534.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ms1j")
+script = ExtResource("6_4ms1j")
+
+[node name="FadeInRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ToDesktop" type="ConfirmationDialog" parent="."]
+ok_button_text = "Yay"
+dialog_text = "Quit and return to Desktop?"
+cancel_button_text = "Nay"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i0awj")
+volume_db = -25.0
+pitch_scale = 0.65
+
+[connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_any_button_pressed"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]
