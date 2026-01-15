@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var Icon: TextureRect = get_node("IconWrapper/TextureRect")
 @onready var quantity_label: Label = $Label
 @onready var selection_frame: Control = $SelectionFrame1
-
+var sell = true
 
 var slot_data: SlotData
 
@@ -35,13 +35,17 @@ func _gui_input(event):
 		
 		_quick_move()
 
+func toggle_sell():
+	if sell:
+		sell=false
+	else:
+		sell = true
+
 func _quick_move():
 	if !slot_data.item_data: return
-	var npc  =  get_tree().root.find_child("npc", true, false)
-	if !npc: return
 	
-	if npc.current_state == npc.SELL:
-		npc.sell_item(slot_data.item_data, slot_data.quantity)
+	if sell:
+		sell_item(slot_data.item_data, slot_data.quantity)
 		slot_data.item_data = null
 		slot_data.quantity = 0
 		play_move_sound()
@@ -87,6 +91,6 @@ func set_highlight(is_active: bool):
 		selection_frame.visible = is_active
 
 func sell_item(item: ItemData, quantity:int):
-	var playground  =  get_tree().root.find_child("playground", true, false)
-	playground.money+=item.price*quantity
+	var playground  =  get_tree().root.find_child("Playground", true, false)
+	playground.sub_money(-item.price*quantity)
 	
