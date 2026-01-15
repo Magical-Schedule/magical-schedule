@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_jpfua")
-name = "Flower"
+name = "blue_flower"
 icon = ExtResource("1_kbdpe")
+price = 30
 metadata/_custom_type_script = "uid://cn14bkb8rllvo"
