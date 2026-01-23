@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://blmsp1xvwlccu"]
+
+[ext_resource type="Script" uid="uid://d0k5xhqa0ifd3" path="res://scripts/item-system/inventory/InventorySlot.gd" id="1_vov34"]
+[ext_resource type="Texture2D" uid="uid://oplqw0kyqwc2" path="res://assets/UI and logos/Low res/SelectedSlot_low.png" id="2_screb"]
+[ext_resource type="Texture2D" uid="uid://bihfor3sny88" path="res://assets/UI and logos/High res/Backpack_slot.png" id="2_wo1sd"]
+[ext_resource type="AudioStream" uid="uid://benxi18pbls54" path="res://assets/sounds/pick_up_1.wav" id="4_m7wld"]
+
+[node name="InventorySlot" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1856.0
+offset_bottom = -1016.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_vov34")
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectionFrame" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_screb")
+
+[node name="SelectionFrame1" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.5294118)
+layout_mode = 2
+texture = ExtResource("2_wo1sd")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+horizontal_alignment = 2
+
+[node name="IconWrapper" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="IconWrapper"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+expand_mode = 1
+
+[node name="Move_item_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m7wld")
+volume_db = -1.01
+pitch_scale = 1.31

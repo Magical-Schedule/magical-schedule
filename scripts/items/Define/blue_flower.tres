@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://g1fyh7bwq870"]
+
+[ext_resource type="Texture2D" uid="uid://djnobyg3t2avp" path="res://assets/plants/inventory_items/flower_item.png" id="1_kbdpe"]
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="2_jpfua"]
+
+[resource]
+script = ExtResource("2_jpfua")
+name = "blue_flower"
+icon = ExtResource("1_kbdpe")
+price = 30
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://du65fq30scqmn"]
+
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="1_5sxju"]
+[ext_resource type="Texture2D" uid="uid://dfcsbed1fadqk" path="res://assets/plants/growing_animations/growing_animations.png" id="1_jpl1t"]
+[ext_resource type="Texture2D" uid="uid://b708vfeggpio2" path="res://assets/plants/inventory_items/flytrap_seed.png" id="1_m30d8"]
+
+[resource]
+script = ExtResource("1_5sxju")
+name = "fly_seed"
+icon = ExtResource("1_m30d8")
+plantable = true
+is_seed = true
+crop_row_index = 1
+growth_spritesheet = ExtResource("1_jpl1t")
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"
