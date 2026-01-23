@@ -1,8 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dll4ynb800f47"]
+[gd_scene load_steps=31 format=3 uid="uid://dll4ynb800f47"]
 
 [ext_resource type="Script" uid="uid://bwud2fw050nbq" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c27sgqxiet8my" path="res://assets/Main-Character/Idle_walk-UP_walk-DOWN-animation/MainCharachter-idle-V4.png" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://c3tjchl45y4pr" path="res://assets/Main-Character/Walk-right_walk-left-animation/MainCharachter-movementV2.png" id="3_lvxji"]
+[ext_resource type="Texture2D" uid="uid://bgpyawjptkt4q" path="res://assets/broom/broom_to_fly.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://cebfx30nhsd7l" path="res://scripts/Broom_Floating.gd" id="5_75vfm"]
+[ext_resource type="Script" uid="uid://plrdw22ssfn" path="res://scripts/Broom_Use.gd" id="5_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rupst"]
 size = Vector2(29.999998, 44.545456)
@@ -205,3 +208,17 @@ sprite_frames = SubResource("SpriteFrames_myrg7")
 animation = &"walking-up"
 autoplay = "Idle"
 frame_progress = 0.8084306
+
+[node name="BroomUse" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("5_p47bc")
+
+[node name="BroomFloating" type="Node" parent="."]
+script = ExtResource("5_75vfm")
+
+[node name="Broom" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Broom"]
+position = Vector2(2.9999924, 77)
+scale = Vector2(0.6039501, 0.46190476)
+texture = ExtResource("4_lvxji")
