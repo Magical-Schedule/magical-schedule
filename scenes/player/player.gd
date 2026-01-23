@@ -8,10 +8,7 @@ var nearby_field: Field = null
 @onready var inventory_ui: Control = null
 @onready var animated_sprite = $AnimatedSprite2D
 
-<<<<<<< HEAD
 
-=======
->>>>>>> player-idle-breathing
 @onready var steps_sfx: AudioStreamPlayer = $Walk_sfx
 
 var step_sounds = [
@@ -26,10 +23,7 @@ func _ready() -> void:
 	inventory_ui = get_tree().get_first_node_in_group("inventory_ui")
 	if not inventory_ui:
 		print("⚠️ InventoryUI not found in scene - will add to inventory later")
-<<<<<<< HEAD
 	
-=======
->>>>>>> player-idle-breathing
 
 func play_random_step():
 	if steps_sfx == null or step_sounds.is_empty():
@@ -86,6 +80,7 @@ func interact_with_field():
 		var result = nearby_field.harvest()
 		if result.has("item"):
 			print("🌾 Harvested:  ", result.amount, "x ", result.item)
+			Harvest_History.add_harvest(result.item, result.amount)
 			print("⚠️ TODO:  Add to inventory system")
 	else:
 		# Za zdaj: zalivanje ali sajenje (testno)

@@ -13,11 +13,8 @@ const MOISTURE_DECAY := 0.02
 @onready var plant_sprite: Sprite2D = $PlantSprite
 @onready var proximity_area: Area2D = $InteractionArea # This is your trigger zone
 @onready var prompt_ui: Control = $UI  # The floating "F" prompt
-<<<<<<< HEAD
 var current_crop_row: int = 0
 var current_growth_texture: Texture2D
-=======
->>>>>>> player-idle-breathing
 
 # SFX
 @onready var planting_sfx: AudioStreamPlayer = get_node_or_null("Plant_sfx")
@@ -60,7 +57,6 @@ func _process(delta):
 					update_ui_text("Press F to Harvest")
 
 func _unhandled_input(event):
-<<<<<<< HEAD
 	if player_in_range and event.is_action_pressed("interact"):
 		if state == FieldState.EMPTY:
 			var inv_ui = get_tree().get_first_node_in_group("inventory_group") # Uporabi skupino!
@@ -73,18 +69,10 @@ func _unhandled_input(event):
 					get_viewport().set_input_as_handled()
 		
 		# DODAJ TA DEL ZA HARVEST:
-=======
-	# Using "interact" (F) - check Project Settings > Input Map
-	if player_in_range and event.is_action_pressed("interact"):
-		if state == FieldState.EMPTY:
-			start_planting()
-			get_viewport().set_input_as_handled()
->>>>>>> player-idle-breathing
 		elif state == FieldState.READY:
 			execute_harvest()
 			get_viewport().set_input_as_handled()
 
-<<<<<<< HEAD
 func start_planting(seed_data: ItemData):
 	if not seed_data: return
 	
@@ -102,18 +90,6 @@ func start_planting(seed_data: ItemData):
 	
 	plant_seed(new_crop)
 	
-=======
-# --- Core Logic ---
-
-func start_planting():
-	# Create test crop
-	var test_crop = Crop.new()
-	test_crop.crop_name = "flower" 
-	test_crop.time_per_stage = 2.0 
-	test_crop.harvest_item_name = "flower"
-	
-	plant_seed(test_crop)
->>>>>>> player-idle-breathing
 
 func plant_seed(crop_data: Crop):
 	crop = crop_data
@@ -126,11 +102,8 @@ func plant_seed(crop_data: Crop):
 	
 	if planting_sfx:
 		planting_sfx.play()
-<<<<<<< HEAD
 		await get_tree().create_timer(0.5).timeout
 		planting_sfx.stop()
-=======
->>>>>>> player-idle-breathing
 	
 	update_ui_text("Growing...")
 
@@ -138,7 +111,6 @@ func execute_harvest():
 	if state != FieldState.READY or not crop:
 		return
 
-<<<<<<< HEAD
 	var yield_amount := int((crop.base_yield + randi() % 3) * soil_quality)
 	var inv_ui = get_tree().get_first_node_in_group("inventory_group")
 
@@ -153,33 +125,17 @@ func execute_harvest():
 		if ResourceLoader.exists(item_path):
 			var item_resource = load(item_path)
 			inv_ui.add_item(item_resource, yield_amount)
+			Harvest_History.add_harvest(final_file_name, yield_amount)
 			if harvest_sfx: harvest_sfx.play()
 			print("SISTEM: Pridelek uspešno dodan: ", final_file_name)
 		else:
 			print("NAPAKA: Datoteka pridelka ne obstaja: ", item_path)
-=======
-	if harvest_sfx:
-		harvest_sfx.play()
-
-	var yield_amount := int((crop.base_yield + randi() % 3) * soil_quality)
-	
-	# Inventory Logic
-	var inv_ui = get_tree().root.find_child("InventoryUi", true, false)
-	if inv_ui:
-		var item_path = "res://scripts/items/Define/" + crop.harvest_item_name + ".tres"
-		if ResourceLoader.exists(item_path):
-			var item_resource = load(item_path)
-			inv_ui.add_item(item_resource, yield_amount)
->>>>>>> player-idle-breathing
 	
 	reset_field()
 	if player_in_range:
 		update_ui_text("Press F to Plant")
 
-<<<<<<< HEAD
 		
-=======
->>>>>>> player-idle-breathing
 func reset_field():
 	state = FieldState.EMPTY
 	crop = null
@@ -194,7 +150,6 @@ func update_environment(delta: float):
 	pot_sprite.texture = load(WET_POT) if moisture > 0.3 else load(DRY_POT)
 
 func update_plant_sprite():
-<<<<<<< HEAD
 	if not crop or not current_growth_texture: return
 	
 	plant_sprite.texture = current_growth_texture
@@ -228,15 +183,6 @@ func update_plant_sprite():
 		plant_sprite.frame = 0 
 		print("Opozorilo: Poskus dostopa do neobstoječega frejma na sliki!")
 
-=======
-	if not crop: return
-	plant_sprite.texture = load("res://assets/plants/growing_animations/growing_animations.png")
-	plant_sprite.hframes = 4 
-	plant_sprite.vframes = 4 
-	
-	var crop_row: int = 0
-	plant_sprite.frame = crop_row * plant_sprite.hframes + crop.current_stage
->>>>>>> player-idle-breathing
 	plant_sprite.modulate = Color(1, moisture, moisture)
 
 func update_ui_text(new_text: String):

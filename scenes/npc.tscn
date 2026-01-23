@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 [gd_scene load_steps=37 format=3 uid="uid://ciymi02qivawm"]
-=======
-[gd_scene load_steps=36 format=3 uid="uid://ciymi02qivawm"]
->>>>>>> player-idle-breathing
 
 [ext_resource type="Script" uid="uid://coah03nbxt0ax" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://dm5qq0rjqrcuf" path="res://assets/Ricardo_npc/Ricardo_NPC.png" id="1_nh2m4"]
 [ext_resource type="PackedScene" uid="uid://dn35gc7nnyvg4" path="res://scenes/dialog.tscn" id="3_rv78h"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://ipnl7k1rqp47" path="res://assets/ChatBackground/chat_background.png" id="4_7n8xq"]
-=======
->>>>>>> player-idle-breathing
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_abqhh"]
 load_path = "res://.godot/imported/Ricardo_NPC.png-c0e21dcb7d556e8b29cf624ba4c1a12d.ctex"
@@ -275,7 +268,6 @@ autostart = true
 position = Vector2(-4, -5)
 shape = SubResource("CircleShape2D_nh2m4")
 
-<<<<<<< HEAD
 [node name="SELL" type="NinePatchRect" parent="."]
 texture_filter = 1
 offset_left = -77.0
@@ -297,8 +289,6 @@ offset_bottom = 18.0
 scale = Vector2(2, 2)
 text = "SELL"
 
-=======
->>>>>>> player-idle-breathing
 [connection signal="dialogue_finished" from="Dialog" to="." method="_on_dialog_dialogue_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_shape_exited" from="Chat_colliosion" to="." method="_on_chat_colliosion_area_shape_exited"]

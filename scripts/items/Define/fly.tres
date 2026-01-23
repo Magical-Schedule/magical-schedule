@@ -5,12 +5,7 @@
 
 [resource]
 script = ExtResource("2_yo6u1")
-<<<<<<< HEAD
 name = "fly"
 icon = ExtResource("1_runvl")
 price = 30
-=======
-name = "Fly"
-icon = ExtResource("1_runvl")
->>>>>>> player-idle-breathing
 metadata/_custom_type_script = "uid://cn14bkb8rllvo"
