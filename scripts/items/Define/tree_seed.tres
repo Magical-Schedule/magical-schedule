@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://ciuh8qlhmhx23"]
+
+[ext_resource type="Texture2D" uid="uid://dfcsbed1fadqk" path="res://assets/plants/growing_animations/growing_animations.png" id="1_f5sal"]
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="1_rdbeh"]
+[ext_resource type="Texture2D" uid="uid://ul2isbl51n1c" path="res://assets/plants/inventory_items/tree_seed.png" id="1_wh185"]
+
+[resource]
+script = ExtResource("1_rdbeh")
+name = "tree_seed"
+icon = ExtResource("1_wh185")
+plantable = true
+is_seed = true
+crop_row_index = 2
+growth_spritesheet = ExtResource("1_f5sal")
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ck0xarjwegqp6"]
+
+[ext_resource type="Texture2D" uid="uid://1hb4n1t6kexq" path="res://assets/plants/inventory_items/tree_item.png" id="1_gmu0q"]
+[ext_resource type="Script" uid="uid://cn14bkb8rllvo" path="res://scripts/item-system/inventory/ItemData.gd" id="2_77q2o"]
+
+[resource]
+script = ExtResource("2_77q2o")
+name = "tree"
+icon = ExtResource("1_gmu0q")
+price = 30
+metadata/_custom_type_script = "uid://cn14bkb8rllvo"
