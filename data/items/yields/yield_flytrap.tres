@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="YieldItem" load_steps=5 format=3 uid="uid://bt2gnonpx4khv"]
 
 [ext_resource type="Script" uid="uid://rax5jkwn8xq0" path="res://src/items/defenitions/yield_item.gd" id="1_6arpc"]
-[ext_resource type="Texture2D" uid="uid://ddhg112c1dv5c" path="res://assets/textures/plants/inventory_items/fly_item.png" id="1_ol104"]
+[ext_resource type="Texture2D" uid="uid://budxtss5i2y5x" path="res://assets/textures/plants/inventory_items/fly_item.png" id="1_ol104"]
 [ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="2_plxy7"]
 
 [sub_resource type="Resource" id="Resource_e3rir"]
