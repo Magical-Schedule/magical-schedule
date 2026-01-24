@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_77q2o")
-name = "Tree"
+name = "tree"
 icon = ExtResource("1_gmu0q")
+price = 30
 metadata/_custom_type_script = "uid://cn14bkb8rllvo"

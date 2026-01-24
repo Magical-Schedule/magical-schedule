@@ -83,6 +83,11 @@ func _quick_move():
 	if !slot_data.item_data: return
 	var iu =  get_tree().root.find_child("InventoryUi", true, false)
 	if iu.sell:
+		Sell_History.add_sale(slot_data.item_data.name, slot_data.quantity, slot_data.item_data.price)
+		var history_ui = get_tree().root.find_child("SellHistoryUI", true, false)
+		if history_ui:
+			history_ui.update_ui()
+			
 		sell_item(slot_data.item_data, slot_data.quantity)
 		slot_data.item_data = null
 		slot_data.quantity = 0

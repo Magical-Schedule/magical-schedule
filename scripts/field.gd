@@ -13,6 +13,8 @@ const MOISTURE_DECAY := 0.02
 @onready var plant_sprite: Sprite2D = $PlantSprite
 @onready var proximity_area: Area2D = $InteractionArea # This is your trigger zone
 @onready var prompt_ui: Control = $UI  # The floating "F" prompt
+var current_crop_row: int = 0
+var current_growth_texture: Texture2D
 
 # SFX
 @onready var planting_sfx: AudioStreamPlayer = get_node_or_null("Plant_sfx")
@@ -55,25 +57,39 @@ func _process(delta):
 					update_ui_text("Press F to Harvest")
 
 func _unhandled_input(event):
-	# Using "interact" (F) - check Project Settings > Input Map
 	if player_in_range and event.is_action_pressed("interact"):
 		if state == FieldState.EMPTY:
-			start_planting()
-			get_viewport().set_input_as_handled()
+			var inv_ui = get_tree().get_first_node_in_group("inventory_group") # Uporabi skupino!
+			if inv_ui:
+				var selected_item = inv_ui.check_item()
+				if selected_item is ItemData and selected_item.is_seed:
+					start_planting(selected_item)
+					inv_ui.get_item_from_active()
+					inv_ui.populate_grids() # Osveži prikaz po sajenju
+					get_viewport().set_input_as_handled()
+		
+		# DODAJ TA DEL ZA HARVEST:
 		elif state == FieldState.READY:
 			execute_harvest()
 			get_viewport().set_input_as_handled()
 
-# --- Core Logic ---
-
-func start_planting():
-	# Create test crop
-	var test_crop = Crop.new()
-	test_crop.crop_name = "flower" 
-	test_crop.time_per_stage = 2.0 
-	test_crop.harvest_item_name = "flower"
+func start_planting(seed_data: ItemData):
+	if not seed_data: return
 	
-	plant_seed(test_crop)
+	var new_crop = Crop.new()
+	
+	# Očistimo ime: odstranimo "_seed" ali " seed", da dobimo ime pridelka
+	var clean_harvest_name = seed_data.name.to_lower().replace("_seed", "").replace(" seed", "").strip_edges()
+	
+	new_crop.crop_name = clean_harvest_name
+	new_crop.harvest_item_name = clean_harvest_name # Zdaj bo mushroom namesto mushroom_seed
+	new_crop.time_per_stage = 2.0 
+
+	current_growth_texture = seed_data.growth_spritesheet
+	current_crop_row = seed_data.crop_row_index 
+	
+	plant_seed(new_crop)
+	
 
 func plant_seed(crop_data: Crop):
 	crop = crop_data
@@ -86,6 +102,8 @@ func plant_seed(crop_data: Crop):
 	
 	if planting_sfx:
 		planting_sfx.play()
+		await get_tree().create_timer(0.5).timeout
+		planting_sfx.stop()
 	
 	update_ui_text("Growing...")
 
@@ -93,23 +111,31 @@ func execute_harvest():
 	if state != FieldState.READY or not crop:
 		return
 
-	if harvest_sfx:
-		harvest_sfx.play()
-
 	var yield_amount := int((crop.base_yield + randi() % 3) * soil_quality)
-	
-	# Inventory Logic
-	var inv_ui = get_tree().root.find_child("InventoryUI", true, false)
+	var inv_ui = get_tree().get_first_node_in_group("inventory_group")
+
 	if inv_ui:
-		var item_path = "res://scripts/items/Define/" + crop.harvest_item_name + ".tres"
+		var final_file_name = crop.harvest_item_name.to_lower().strip_edges()
+		
+		
+		var item_path = "res://scripts/items/Define/" + final_file_name + ".tres"
+		
+		print("DEBUG: Iščem pridelek na poti: ", item_path)
+
 		if ResourceLoader.exists(item_path):
 			var item_resource = load(item_path)
 			inv_ui.add_item(item_resource, yield_amount)
+			Harvest_History.add_harvest(final_file_name, yield_amount)
+			if harvest_sfx: harvest_sfx.play()
+			print("SISTEM: Pridelek uspešno dodan: ", final_file_name)
+		else:
+			print("NAPAKA: Datoteka pridelka ne obstaja: ", item_path)
 	
 	reset_field()
 	if player_in_range:
 		update_ui_text("Press F to Plant")
 
+		
 func reset_field():
 	state = FieldState.EMPTY
 	crop = null
@@ -124,13 +150,39 @@ func update_environment(delta: float):
 	pot_sprite.texture = load(WET_POT) if moisture > 0.3 else load(DRY_POT)
 
 func update_plant_sprite():
-	if not crop: return
-	plant_sprite.texture = load("res://assets/textures/plants/growing_animations/growing_animations.png")
-	plant_sprite.hframes = 4 
-	plant_sprite.vframes = 4 
+	if not crop or not current_growth_texture: return
 	
-	var crop_row: int = 0
-	plant_sprite.frame = crop_row * plant_sprite.hframes + crop.current_stage
+	plant_sprite.texture = current_growth_texture
+
+	if current_growth_texture.get_height() < 40:
+		plant_sprite.position.y = -37  # Vrednost za gobe (prilagodi po občutku)
+	else:
+		plant_sprite.position.y = -74
+		
+	plant_sprite.hframes = 4 
+	
+	if current_growth_texture.get_height() > 40:
+		plant_sprite.vframes = 4
+	else:
+		plant_sprite.vframes = 1 # Za gobo, ki je visoka le 32px
+
+	
+	var row = current_crop_row
+	if plant_sprite.vframes == 1:
+		row = 0
+		
+	# Izračun končnega frejma
+	var target_frame = (row * plant_sprite.hframes) + crop.current_stage
+	
+	# Preverimo, da frame fizično obstaja na naloženi sliki
+	var total_possible_frames = plant_sprite.hframes * plant_sprite.vframes
+	if target_frame < total_possible_frames:
+		plant_sprite.frame = target_frame
+	else:
+		# Če pride do napake, postavi na prvi frame, da ne sesuje igre
+		plant_sprite.frame = 0 
+		print("Opozorilo: Poskus dostopa do neobstoječega frejma na sliki!")
+
 	plant_sprite.modulate = Color(1, moisture, moisture)
 
 func update_ui_text(new_text: String):

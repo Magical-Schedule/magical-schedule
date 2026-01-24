@@ -39,7 +39,7 @@ func _process(delta):
 	if is_roaming:
 		match current_state:
 			IDLE:
-				pass
+				velocity = Vector2.ZERO 
 			NEW_DIR:
 				direction = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN])
 			MOVE:
@@ -57,7 +57,9 @@ func choose(array):
 	
 func move(delta):
 	if !is_chatting:
-		position += direction * speed * delta
+		velocity = direction * speed
+		move_and_slide()
+				
 
 
 

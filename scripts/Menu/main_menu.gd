@@ -28,7 +28,9 @@ func _on_quit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
+	Harvest_History.reset_history()
 	fade_then_load_scene(playScene)
+	
 
 
 func _on_to_desktop_canceled() -> void:

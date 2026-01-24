@@ -80,6 +80,7 @@ func interact_with_field():
 		var result = nearby_field.harvest()
 		if result.has("item"):
 			print("🌾 Harvested:  ", result.amount, "x ", result.item)
+			Harvest_History.add_harvest(result.item, result.amount)
 			print("⚠️ TODO:  Add to inventory system")
 	else:
 		# Za zdaj: zalivanje ali sajenje (testno)

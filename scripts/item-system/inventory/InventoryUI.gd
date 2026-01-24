@@ -135,8 +135,7 @@ func _input(event):
 			change_active_slot(-1)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			change_active_slot(1)
-	"""
-	
+			
 	# Determine the "Vector" of the move
 	var move = Vector2i.ZERO
 			
@@ -156,6 +155,26 @@ func _input(event):
 		var slot = target_grid.get_child(focused_index)
 		# Now you can call use_item() or quick_move() on that slot!
 	"""
+
+func add_item(item: ItemData, count: int = 1):
+	var search_order = []
+	for i in range(54, 63): search_order.append(i) # Hotbar indeksi
+	for i in range(0, 54): search_order.append(i)  # Inventory indeksi
+
+	if item.stackable:
+		for i in search_order:
+			var slot = inventory_data.slots[i]
+			if slot.item_data == item:
+				slot.quantity += count
+				return true # Uspešno dodano
+
+	for i in search_order:
+		var slot = inventory_data.slots[i]
+		if slot.item_data == null:
+			slot.item_data = item
+			slot.quantity = count
+			populate_grids()
+			return true # Uspešno dodano
 
 func populate_grids():
 	for child in inv_grid.get_children(): child.queue_free()

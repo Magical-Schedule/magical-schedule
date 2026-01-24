@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://def5dbbgbaemi"]
+[gd_scene load_steps=23 format=4 uid="uid://def5dbbgbaemi"]
 
 [ext_resource type="PackedScene" uid="uid://dll4ynb800f47" path="res://scenes/player/player.tscn" id="1_7qj6t"]
 [ext_resource type="Script" path="res://scripts/playground.gd" id="1_i3bnj"]
@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://bo7jqm8lpo03" path="res://assets/sounds/watering.wav" id="7_8dc3m"]
 [ext_resource type="PackedScene" uid="uid://ciymi02qivawm" path="res://scenes/npc.tscn" id="8_wykfv"]
 [ext_resource type="PackedScene" uid="uid://bt424475i1tt2" path="res://scripts/item-system/inventory/buyInventory.tscn" id="10_lbj16"]
+[ext_resource type="Script" uid="uid://d1skaimm24bn5" path="res://scripts/item-system/system/Harvest_HistoryUI.gd" id="12_lbj16"]
+[ext_resource type="Script" uid="uid://dx75rjw2m7ch8" path="res://scenes/dev/Session_HistoryUI.gd" id="12_wfir5"]
+[ext_resource type="Script" uid="uid://c7xoo1xsgr1ly" path="res://scripts/item-system/system/Sell_HistoryUI.gd" id="13_10xwv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rp7f"]
 
@@ -402,6 +405,12 @@ sources/0 = SubResource("TileSetAtlasSource_g8fdx")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rp7f"]
 
+[sub_resource type="Theme" id="Theme_10xwv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10xwv"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8fdx"]
 radius = 22.022715
 
@@ -441,7 +450,7 @@ pitch_scale = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("5_ftahm")]
+[node name="InventoryUi" parent="CanvasLayer" groups=["inventory_group"] instance=ExtResource("5_ftahm")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
 metadata/_edit_lock_ = true
@@ -461,10 +470,111 @@ offset_top = 449.0
 offset_right = -747.0
 offset_bottom = -521.0
 
+[node name="SellHistoryUI" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -270.0
+offset_right = 324.0
+offset_bottom = -2.0
+grow_vertical = 0
+mouse_filter = 2
+theme = SubResource("Theme_10xwv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_10xwv")
+script = ExtResource("13_10xwv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SellHistoryUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/SellHistoryUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="HistoryText" type="RichTextLabel" parent="CanvasLayer/SellHistoryUI/VBoxContainer"]
+custom_minimum_size = Vector2(400, 230)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+autowrap_mode = 2
+
+[node name="SessionHistoryUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_wfir5")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/SessionHistoryUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 100)
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SessionHistoryUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 5980.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/SessionHistoryUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/SessionHistoryUI/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+
+[node name="SessionList" type="RichTextLabel" parent="CanvasLayer/SessionHistoryUI/Panel/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_following = true
+scroll_following_visible_characters = true
+autowrap_mode = 2
+
 [node name="NPC" parent="." instance=ExtResource("8_wykfv")]
 position = Vector2(1328, -615)
-disable_mode = 2
+disable_mode = 1
 
 [node name="collision_shape_npc" type="CollisionShape2D" parent="NPC"]
 position = Vector2(-5, 51)
 shape = SubResource("CircleShape2D_g8fdx")
+
+[node name="Field2" parent="." instance=ExtResource("4_2o04f")]
+position = Vector2(141, -200)
+
+[node name="Harvest_sfx" type="AudioStreamPlayer" parent="Field2"]
+stream = ExtResource("6_8dc3m")
+
+[node name="Plant_sfx" type="AudioStreamPlayer" parent="Field2"]
+stream = ExtResource("7_8dc3m")
+volume_db = 1.742
+pitch_scale = 0.5
+
+[node name="HarvestHistoryUI" type="CanvasLayer" parent="."]
+script = ExtResource("12_lbj16")
+
+[node name="HistoryLabel" type="Label" parent="HarvestHistoryUI"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 40.0
+offset_bottom = 23.0

@@ -62,3 +62,13 @@ func _on_no_button_pressed() -> void:
 	$Selling_interest.visible = false
 	emit_signal("sell_menue_closed")
 	
+	var playground = get_tree().root.find_child("Playground", true, false)
+	if playground:
+		var final_money = playground.get_money()
+		Sell_History.end_session(final_money)
+		
+	var history_ui = get_tree().root.find_child("SellHistoryUI", true, false)
+	if history_ui:
+		history_ui.update_ui()
+		
+	
