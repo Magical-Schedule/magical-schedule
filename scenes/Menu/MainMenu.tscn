@@ -122,13 +122,13 @@ stream = ExtResource("8_i0awj")
 volume_db = -25.0
 pitch_scale = 0.65
 
-[connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Play" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_any_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_any_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/Quit" to="." method="_on_quit_pressed"]
-[connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
 [connection signal="canceled" from="ToDesktop" to="." method="_on_any_button_pressed"]
-[connection signal="confirmed" from="ToDesktop" to="." method="_on_any_button_pressed"]
+[connection signal="canceled" from="ToDesktop" to="." method="_on_to_desktop_canceled"]
 [connection signal="confirmed" from="ToDesktop" to="." method="_on_to_desktop_confirmed"]
+[connection signal="confirmed" from="ToDesktop" to="." method="_on_any_button_pressed"]
