@@ -38,17 +38,23 @@ func _gui_input(event):
 
 func _quick_move():
 	if !slot_data.item_data: return
-	var iu =  get_tree().root.find_child("InventoryUi", true, false)
+	
+	var iu = get_tree().root.find_child("InventoryUi", true, false) 
+	if !iu: return
+	
+	# Handle Selling Logic
 	if iu.sell:
-		Sell_History.add_sale(slot_data.item_data.name, slot_data.quantity, slot_data.item_data.price)
-		var history_ui = get_tree().root.find_child("SellHistoryUI", true, false)
+		# Note: Ensure your Item class has a 'price' property or default to 0
+		var price = slot_data.item_data.get("price") if slot_data.item_data.get("price") else 0
+		Sell_History.add_sale(slot_data.item_data.name, slot_data.quantity, price) 
+		
+		var history_ui = get_tree().root.find_child("SellHistoryUI", true, false) 
 		if history_ui:
-			history_ui.update_ui()
+			history_ui.update_ui() 
 			
-		sell_item(slot_data.item_data, slot_data.quantity)
-		slot_data.item_data = null
-		slot_data.quantity = 0
-		play_move_sound()
+		sell_item(slot_data.item_data, slot_data.quantity) 
+		slot_data.quantity = 0 # This will null the item_data via SlotData setter 
+		play_move_sound() 
 		return
 		
 	# Išče InventoryUi vozlišče v drevesu
@@ -90,7 +96,6 @@ func set_highlight(is_active: bool):
 	if selection_frame:
 		selection_frame.visible = is_active
 
-func sell_item(item: ItemData, quantity:int):
+func sell_item(item: Item, quantity: float):
 	var playground  =  get_tree().root.find_child("Playground", true, false)
-	playground.sub_money(-item.price*quantity)
-	
+	playground.sub_money(-item.price * quantity)

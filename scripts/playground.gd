@@ -4,7 +4,7 @@ extends Node2D
 @onready var moneyLabel = $CanvasLayer/Label
 @onready var buyMenu = $CanvasLayer/BuyInventory
 
-var money = 100
+var money: float = 100.0
 
 func _ready() -> void:
 	moneyLabel.text = str(money) + "$"
@@ -49,7 +49,7 @@ func get_money() -> int:
 	return money
 
 
-func sub_money(price: int) -> void:
+func sub_money(price: float) -> void:
 	money -= price
 	moneyLabel.text = str(money) + "$"
 
