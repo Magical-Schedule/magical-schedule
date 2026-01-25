@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="YieldItem" load_steps=5 format=3 uid="uid://bloqao6i6usun"]
+
+[ext_resource type="Script" uid="uid://rax5jkwn8xq0" path="res://src/items/defenitions/yield_item.gd" id="1_knyrd"]
+[ext_resource type="Texture2D" uid="uid://1hb4n1t6kexq" path="res://assets/plants/inventory_items/tree_item.png" id="1_v5vp8"]
+[ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="2_2nwtl"]
+
+[sub_resource type="Resource" id="Resource_5x5jt"]
+script = ExtResource("2_2nwtl")
+is_consumable = false
+metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
+
+[resource]
+script = ExtResource("1_knyrd")
+name = "Tree Yield"
+icon = ExtResource("1_v5vp8")
+quantity_data = SubResource("Resource_5x5jt")
+metadata/_custom_type_script = "uid://rax5jkwn8xq0"
