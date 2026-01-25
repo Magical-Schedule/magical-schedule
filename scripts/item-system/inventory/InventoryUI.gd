@@ -17,8 +17,10 @@ func _ready():
 	inv_panel.visible = false 
 	hotbar_panel.visible = true
 	
-	add_item(load("res://scripts/items/Define/mushroom.tres"))
-	add_item(load("res://scripts/items/Define/mushroom_seed.tres"))
+	# add_item(load("res://scripts/items/Define/mushroom.tres"))
+	# add_item(load("res://scripts/items/Define/mushroom_seed.tres"))
+	add_item(load("res://data/items/seeds/seed_mushroom.tres"))
+	add_item(load("res://data/items/yields/yield_mushroom.tres"))
 	populate_grids()
 	
 	
@@ -52,25 +54,32 @@ func _input(event):
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			change_active_slot(1)
 			
-func add_item(item: ItemData, count: int = 1):
+func add_item(item: Item, count: int = 1):
 	var search_order = []
-	for i in range(54, 63): search_order.append(i) # Hotbar indeksi
-	for i in range(0, 54): search_order.append(i)  # Inventory indeksi
+	for i in range(54, 63): search_order.append(i) 
+	for i in range(0, 54): search_order.append(i)
 
-	if item.stackable:
+	# Stacking logic using QuantityComponent
+	if item.quantity_data and item.quantity_data.max_stack > 1:
 		for i in search_order:
 			var slot = inventory_data.slots[i]
-			if slot.item_data == item:
-				slot.quantity += count
-				return true # Uspešno dodano
+			if slot.item_data and slot.item_data.name == item.name:
+				# Check if there is room in the stack
+				var remaining_space = item.quantity_data.max_stack - slot.quantity
+				if remaining_space > 0:
+					var amount_to_add = min(count, remaining_space)
+					slot.quantity += amount_to_add
+					count -= amount_to_add
+					if count <= 0: return true 
 
+	# Find empty slot for remaining items
 	for i in search_order:
 		var slot = inventory_data.slots[i]
 		if slot.item_data == null:
 			slot.item_data = item
 			slot.quantity = count
 			populate_grids()
-			return true # Uspešno dodano
+			return true
 	
 	return false
 
