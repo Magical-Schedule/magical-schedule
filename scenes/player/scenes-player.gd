@@ -1,4 +1,4 @@
-class_name Player
+class_name ScenesPlayer
 extends CharacterBody2D
 
 var move_speed:  float = 350.0

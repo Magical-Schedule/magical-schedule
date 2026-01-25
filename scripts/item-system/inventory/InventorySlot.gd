@@ -35,35 +35,54 @@ func set_slot_data(data: SlotData):
 
 ## Quick Move Helper Method
 func _quick_move():
-	if !slot_data.item_data: return 
+	if !slot_data.item_data: 
+		return 
 	
-	var ui = get_tree().root.find_child("InventoryUI", true, false) 
+	var ui = get_tree().root.find_child("InventoryUi", true, false)
+	if !ui: return
+
+	# 1. Handle Selling Mode
+	if ui.sell:
+		# Use .quantity if it exists, otherwise default to 1 or stack count
+		var qty = slot_data.item_data.quantity_data.current_stack
+		Sell_History.add_sale(slot_data.item_data.name, qty, slot_data.item_data.price)
+		
+		var history_ui = get_tree().root.find_child("SellHistoryUI", true, false)
+		if history_ui:
+			history_ui.update_ui()
+			
+		sell_item(slot_data.item_data, qty)
+		slot_data.item_data = null
+		play_move_sound()
+		return
+
+	# 2. Handle Backpack <-> Hotbar Transfer
 	var inv_data = ui.inventory_data
-	
-	# Determine if this slot is currently in the backpack or hotbar
 	var is_in_backpack = inv_data.backpack_slots.has(slot_data)
-	
-	# If in backpack, try to move to hotbar; if in hotbar, move to backpack
 	var target_array = inv_data.hotbar_slots if is_in_backpack else inv_data.backpack_slots
 	
 	for target_slot in target_array:
-		# 1. Try to stack first if item is stackable 
+		# Try to stack
 		if target_slot.item_data and target_slot.item_data.resource_path == slot_data.item_data.resource_path:
 			var target_q = target_slot.item_data.quantity_data
 			var source_q = slot_data.item_data.quantity_data
 			
 			if target_q and source_q and target_q.current_stack < target_q.max_stack:
 				target_q.current_stack += source_q.current_stack
-				slot_data.item_data = null # Clear the old slot
+				slot_data.item_data = null
 				play_move_sound()
 				return
 		
-		# 2. Or find an empty slot
+		# Or find empty
 		if target_slot.item_data == null:
 			target_slot.item_data = slot_data.item_data
 			slot_data.item_data = null
 			play_move_sound()
 			return
+	
+	# self_modulate affects the node's transparency 
+	# without affecting its children (like the icon)
+	# self.self_modulate.a = alpha
 
 ## GUI Input Method
 func _gui_input(event):
@@ -77,30 +96,6 @@ func apply_visuals(bg_tex: Texture2D, alpha: float, slot_size: Vector2 = Vector2
 		custom_minimum_size = slot_size
 	
 	if bg_tex: background.texture = bg_tex
-
-
-func _quick_move():
-	if !slot_data.item_data: return
-	var iu =  get_tree().root.find_child("InventoryUi", true, false)
-	if iu.sell:
-		Sell_History.add_sale(slot_data.item_data.name, slot_data.quantity, slot_data.item_data.price)
-		var history_ui = get_tree().root.find_child("SellHistoryUI", true, false)
-		if history_ui:
-			history_ui.update_ui()
-			
-		sell_item(slot_data.item_data, slot_data.quantity)
-		slot_data.item_data = null
-		slot_data.quantity = 0
-		play_move_sound()
-		return
-		
-	# Išče InventoryUi vozlišče v drevesu
-	var ui = get_tree().root.find_child("InventoryUi", true, false)
-	if !ui: return
-	
-	# self_modulate affects the node's transparency 
-	# without affecting its children (like the icon)
-	self.self_modulate.a = alpha
 
 ## Handles slot transparency
 func set_highlight(is_focused: bool, active_alpha: float, inactive_alpha: float):
@@ -137,7 +132,7 @@ func set_highlight(is_active: bool):
 		selection_frame.visible = is_active
 """
 
-func sell_item(item: ItemData, quantity:int):
+func sell_item(item: Item, quantity:int):
 	var playground  =  get_tree().root.find_child("Playground", true, false)
 	playground.sub_money(-item.price*quantity)
 	
