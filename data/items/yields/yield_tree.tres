@@ -14,4 +14,5 @@ script = ExtResource("1_knyrd")
 name = "Tree Yield"
 icon = ExtResource("1_v5vp8")
 quantity_data = SubResource("Resource_5x5jt")
+price = 100.0
 metadata/_custom_type_script = "uid://rax5jkwn8xq0"

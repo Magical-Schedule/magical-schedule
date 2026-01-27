@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wug4aotp6twt"
-path="res://.godot/imported/pločnik_obe_verziji-SET.png-94761094ba15c2548eebf0be501931f5.ctex"
+path="res://.godot/imported/pločnik_obe_verziji-SET.png-a70f9e63e70129794206f20c34d8183c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/pločnik_obe_verziji-SET.png"
-dest_files=["res://.godot/imported/pločnik_obe_verziji-SET.png-94761094ba15c2548eebf0be501931f5.ctex"]
+source_file="res://assets/tilesets/pločnik_obe_verziji-SET.png"
+dest_files=["res://.godot/imported/pločnik_obe_verziji-SET.png-a70f9e63e70129794206f20c34d8183c.ctex"]
 
 [params]
 

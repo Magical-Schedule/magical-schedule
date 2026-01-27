@@ -43,8 +43,8 @@ func load_history():
 		earned_money = data.get("earned_money", {})
 		total_earned = data.get("total_earned", 0)
 
-func end_session(final_money: int):
-	print("END SESSION CALLED, final_money =", final_money)
+func end_session(final_money: float):
+	print("END SESSION CALLED, final_money = ", final_money)
 	var entry = {
 		"timestamp": Time.get_datetime_string_from_system(),
 		"sold_items": sold_items.duplicate(true),

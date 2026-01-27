@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_1vufv"]
 script = ExtResource("2_v5rod")
+max_uses = 8
 is_consumable = false
 metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
 
@@ -14,4 +15,5 @@ script = ExtResource("1_wrurr")
 name = "Mushroom Yield"
 icon = ExtResource("1_01bvp")
 quantity_data = SubResource("Resource_1vufv")
+price = 62.5
 metadata/_custom_type_script = "uid://rax5jkwn8xq0"

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blxtd8bp30nrq" path="res://scenes/Menu/PauseMenu.tscn" id="6_gyw54"]
 [ext_resource type="AudioStream" uid="uid://bo7jqm8lpo03" path="res://assets/sounds/watering.wav" id="7_8dc3m"]
 [ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="8_wykfv"]
-[ext_resource type="PackedScene" path="res://scripts/item-system/inventory/buyInventory.tscn" id="10_lbj16"]
+[ext_resource type="PackedScene" uid="uid://r33sx7ykwq0v" path="res://scripts/item-system/inventory/buyInventory.tscn" id="10_lbj16"]
 [ext_resource type="Script" uid="uid://d1skaimm24bn5" path="res://scripts/item-system/system/Harvest_HistoryUI.gd" id="12_lbj16"]
 [ext_resource type="Script" uid="uid://dx75rjw2m7ch8" path="res://scenes/dev/Session_HistoryUI.gd" id="12_wfir5"]
 [ext_resource type="Script" uid="uid://c7xoo1xsgr1ly" path="res://scripts/item-system/system/Sell_HistoryUI.gd" id="13_10xwv"]
@@ -455,11 +455,15 @@ pitch_scale = 0.5
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_gyw54")]
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 1670.0
-offset_top = 18.0
-offset_right = 1893.0
-offset_bottom = 78.0
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -370.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_1rp7f")
 horizontal_alignment = 1
@@ -471,6 +475,7 @@ offset_right = -747.0
 offset_bottom = -521.0
 
 [node name="SellHistoryUI" type="Panel" parent="CanvasLayer"]
+visible = false
 custom_minimum_size = Vector2(20, 20)
 anchors_preset = 2
 anchor_top = 1.0
@@ -552,6 +557,27 @@ scroll_following = true
 scroll_following_visible_characters = true
 autowrap_mode = 2
 
+[node name="EndingLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -40.0
+offset_right = -59.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1rp7f")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="EndingSFX" type="AudioStreamPlayer" parent="CanvasLayer/EndingLabel"]
+
 [node name="NPC" parent="." instance=ExtResource("8_wykfv")]
 position = Vector2(1328, -615)
 disable_mode = 1
@@ -572,6 +598,7 @@ volume_db = 1.742
 pitch_scale = 0.5
 
 [node name="HarvestHistoryUI" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("12_lbj16")
 
 [node name="HistoryLabel" type="Label" parent="HarvestHistoryUI"]

@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_w7tk4"]
 script = ExtResource("2_ena1o")
+max_uses = 4
 is_consumable = false
 metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
 
@@ -14,4 +15,5 @@ script = ExtResource("1_3t6vr")
 name = "Flower Yield"
 icon = ExtResource("1_ujj25")
 quantity_data = SubResource("Resource_w7tk4")
+price = 75.0
 metadata/_custom_type_script = "uid://rax5jkwn8xq0"

@@ -98,4 +98,4 @@ func set_highlight(is_active: bool):
 
 func sell_item(item: Item, quantity: float):
 	var playground  =  get_tree().root.find_child("Playground", true, false)
-	playground.sub_money(-item.price * quantity)
+	playground.modify_balance(item.price * quantity)
