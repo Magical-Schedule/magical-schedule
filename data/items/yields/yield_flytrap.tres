@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_e3rir"]
 script = ExtResource("2_plxy7")
+max_uses = 2
 is_consumable = false
 metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
 
@@ -14,4 +15,5 @@ script = ExtResource("1_6arpc")
 name = "Flytrap Yield"
 icon = ExtResource("1_ol104")
 quantity_data = SubResource("Resource_e3rir")
+price = 87.5
 metadata/_custom_type_script = "uid://rax5jkwn8xq0"

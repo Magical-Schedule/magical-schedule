@@ -19,12 +19,11 @@ func _ready():
 	
 	# add_item(load("res://scripts/items/Define/mushroom.tres"))
 	# add_item(load("res://scripts/items/Define/mushroom_seed.tres"))
-	add_item(load("res://data/items/seeds/seed_mushroom.tres"))
-	add_item(load("res://data/items/yields/yield_mushroom.tres"))
+	# add_item(load("res://data/items/yields/yield_mushroom.tres"))
+	# add_item(load("res://data/items/seeds/seed_mushroom.tres"))
 	populate_grids()
 	
-	
-#naredi inventory
+## Populating Grids
 func populate_grids():
 	for child in inv_grid.get_children(): child.queue_free()
 	for child in hotbar_grid.get_children(): child.queue_free()
@@ -37,7 +36,8 @@ func populate_grids():
 			hotbar_grid.add_child(slot_visual)
 		slot_visual.set_slot_data(inventory_data.slots[i])
 	update_hotbar_visuals()
-#inventory toggle z E
+	
+## Input Processing
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"): 
 		sell = false
@@ -48,6 +48,12 @@ func _input(event):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			inventory_data.save_inventory()
+
+	if event.is_action_pressed("inventory_left"):
+		change_active_slot(-1)
+	elif event.is_action_pressed("inventory_right"):
+		change_active_slot(1)
+
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			change_active_slot(-1)
@@ -59,27 +65,49 @@ func add_item(item: Item, count: int = 1):
 	for i in range(54, 63): search_order.append(i) 
 	for i in range(0, 54): search_order.append(i)
 
-	# Stacking logic using QuantityComponent
-	if item.quantity_data and item.quantity_data.max_stack > 1:
+	# print(str(item.quantity_data.max_stack) + " >= 1: " 
+	#	+ ("true" if item.quantity_data.max_stack >= 1 else "false"))
+
+	# 1. Stacking logic
+	if item.quantity_data.max_stack >= 1:
 		for i in search_order:
 			var slot = inventory_data.slots[i]
-			if slot.item_data and slot.item_data.name == item.name:
-				# Check if there is room in the stack
-				var remaining_space = item.quantity_data.max_stack - slot.quantity
+			
+			if slot.item_data == null: continue;
+			
+			print(slot.item_data.name + " == " + item.name + ": " 
+				+ ("true" if slot.item_data.name == item.name else "false"))
+			
+			if slot.item_data.name == item.name:
+				var remaining_space = item.quantity_data.max_uses - slot.quantity
+				
+				print("count = " + str(count))
+				print("remaining_space = " + 
+					str(item.quantity_data.max_uses)
+					+ " - " + str(slot.quantity)
+					+ " = " + str(remaining_space))
+					
 				if remaining_space > 0:
 					var amount_to_add = min(count, remaining_space)
+					
+					print("amount_to_add = " + str(amount_to_add))
+					
 					slot.quantity += amount_to_add
 					count -= amount_to_add
-					if count <= 0: return true 
+					
+					if count <= 0: 
+						populate_grids() # Update UI once after logic finishes
+						return true 
 
-	# Find empty slot for remaining items
-	for i in search_order:
-		var slot = inventory_data.slots[i]
-		if slot.item_data == null:
-			slot.item_data = item
-			slot.quantity = count
-			populate_grids()
-			return true
+	# 2. Find empty slot for REMAINDER of items
+	if count > 0:
+		for i in search_order:
+			var slot = inventory_data.slots[i]
+			if slot.item_data == null:
+				slot.item_data = item
+				slot.quantity = count
+				populate_grids()
+				return true
 	
 	return false
 

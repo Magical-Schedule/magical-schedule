@@ -62,7 +62,7 @@ func _unhandled_input(event):
 			var inv_ui = get_tree().get_first_node_in_group("inventory_group") # Uporabi skupino!
 			if inv_ui:
 				var selected_item = inv_ui.check_item()
-				if selected_item is ItemData and selected_item.is_seed:
+				if selected_item is SeedItem:
 					start_planting(selected_item)
 					inv_ui.get_item_from_active()
 					inv_ui.populate_grids() # Osveži prikaz po sajenju
@@ -73,20 +73,20 @@ func _unhandled_input(event):
 			execute_harvest()
 			get_viewport().set_input_as_handled()
 
-func start_planting(seed_data: ItemData):
-	if not seed_data: return
+func start_planting(seed_item: SeedItem):
+	if not seed_item: return
 	
 	var new_crop = Crop.new()
 	
 	# Očistimo ime: odstranimo "_seed" ali " seed", da dobimo ime pridelka
-	var clean_harvest_name = seed_data.name.to_lower().replace("_seed", "").replace(" seed", "").strip_edges()
+	var clean_harvest_name = seed_item.name.to_lower().replace("_seed", "").replace(" seed", "").strip_edges()
 	
 	new_crop.crop_name = clean_harvest_name
 	new_crop.harvest_item_name = clean_harvest_name # Zdaj bo mushroom namesto mushroom_seed
-	new_crop.time_per_stage = 2.0 
+	new_crop.time_per_stage = seed_item.growth_time / 4
 
-	current_growth_texture = seed_data.growth_spritesheet
-	current_crop_row = seed_data.crop_row_index 
+	current_growth_texture = seed_item.growth_spritesheet
+	current_crop_row = seed_item.crop_row_index 
 	
 	plant_seed(new_crop)
 	
@@ -115,13 +115,11 @@ func execute_harvest():
 	var inv_ui = get_tree().get_first_node_in_group("inventory_group")
 
 	if inv_ui:
-		var final_file_name = crop.harvest_item_name.to_lower().strip_edges()
-		
-		
-		var item_path = "res://scripts/items/Define/" + final_file_name + ".tres"
+		var final_file_name = crop.harvest_item_name.to_lower().strip_edges()	
+		var item_path = "res://data/items/yields/yield_" + final_file_name + ".tres"
 		
 		print("DEBUG: Iščem pridelek na poti: ", item_path)
-
+		
 		if ResourceLoader.exists(item_path):
 			var item_resource = load(item_path)
 			inv_ui.add_item(item_resource, yield_amount)

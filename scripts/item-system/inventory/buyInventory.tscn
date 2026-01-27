@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt424475i1tt2"]
+[gd_scene load_steps=7 format=3 uid="uid://r33sx7ykwq0v"]
 
 [ext_resource type="Script" uid="uid://bb8cfv8gnselw" path="res://scripts/item-system/inventory/buyInventory.gd" id="1_anrj0"]
 [ext_resource type="Texture2D" uid="uid://b708vfeggpio2" path="res://assets/plants/inventory_items/flytrap_seed.png" id="1_gqhql"]
 [ext_resource type="Texture2D" uid="uid://cwilcrnv7obmq" path="res://assets/plants/inventory_items/mushroom_seed.png" id="2_anrj0"]
+[ext_resource type="Texture2D" uid="uid://d3bb8xsbq4f24" path="res://assets/plants/inventory_items/flower_seed.png" id="2_sydtr"]
 [ext_resource type="Texture2D" uid="uid://canugx5065jtj" path="res://assets/plants/inventory_items/grass_seed.png" id="3_sydtr"]
 [ext_resource type="Texture2D" uid="uid://ul2isbl51n1c" path="res://assets/plants/inventory_items/tree_seed.png" id="4_1co6h"]
 
@@ -38,28 +39,28 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_gqhql")
+texture_normal = ExtResource("2_sydtr")
 stretch_mode = 0
 
 [node name="TextureButton2" type="TextureButton" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("2_anrj0")
+texture_normal = ExtResource("1_gqhql")
 stretch_mode = 0
 
 [node name="TextureButton3" type="TextureButton" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_gqhql")
+texture_normal = ExtResource("3_sydtr")
 stretch_mode = 0
 
 [node name="TextureButton4" type="TextureButton" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("3_sydtr")
+texture_normal = ExtResource("2_anrj0")
 stretch_mode = 0
 
 [node name="TextureButton5" type="TextureButton" parent="PanelContainer/HBoxContainer"]

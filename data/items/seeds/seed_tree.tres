@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SeedItem" load_steps=6 format=3 uid="uid://01dodmei6itk"]
+[gd_resource type="Resource" script_class="SeedItem" load_steps=7 format=3 uid="uid://01dodmei6itk"]
 
 [ext_resource type="Texture2D" uid="uid://ul2isbl51n1c" path="res://assets/plants/inventory_items/tree_seed.png" id="1_3sa38"]
+[ext_resource type="Texture2D" uid="uid://dfcsbed1fadqk" path="res://assets/plants/growing_animations/growing_animations.png" id="1_avkij"]
 [ext_resource type="Script" uid="uid://d3ht0st3r8s4q" path="res://src/items/defenitions/seed_item.gd" id="1_x85aw"]
 [ext_resource type="Script" uid="uid://b10yhfy0lg0ay" path="res://src/items/base/quantity_component.gd" id="1_xhh8a"]
 [ext_resource type="Resource" uid="uid://bloqao6i6usun" path="res://data/items/yields/yield_tree.tres" id="4_yludn"]
@@ -13,8 +14,12 @@ metadata/_custom_type_script = "uid://b10yhfy0lg0ay"
 [resource]
 script = ExtResource("1_x85aw")
 yield_item = ExtResource("4_yludn")
+growth_time = 8.0
+crop_row_index = 2
+growth_spritesheet = ExtResource("1_avkij")
 name = "Tree Seed"
 icon = ExtResource("1_3sa38")
 is_placeable = true
 quantity_data = SubResource("Resource_3sa38")
+price = 75.0
 metadata/_custom_type_script = "uid://d3ht0st3r8s4q"
